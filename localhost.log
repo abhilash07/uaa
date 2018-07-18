@@ -1,0 +1,142 @@
+16-Jul-2018 06:17:41.957 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+16-Jul-2018 06:17:42.017 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+16-Jul-2018 06:17:42.019 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+16-Jul-2018 06:17:42.020 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+16-Jul-2018 06:17:42.021 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+16-Jul-2018 06:17:42.022 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+16-Jul-2018 06:17:42.023 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+16-Jul-2018 06:17:42.023 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+16-Jul-2018 06:17:42.023 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+16-Jul-2018 06:17:56.232 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+16-Jul-2018 06:17:56.235 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+16-Jul-2018 06:17:56.235 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+16-Jul-2018 06:18:36.754 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+16-Jul-2018 06:18:38.558 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext
+16-Jul-2018 07:09:20.271 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'spring'
+16-Jul-2018 07:09:20.470 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
+16-Jul-2018 07:11:50.217 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+16-Jul-2018 07:11:50.258 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+16-Jul-2018 07:11:50.261 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+16-Jul-2018 07:11:50.262 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+16-Jul-2018 07:11:50.262 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+16-Jul-2018 07:11:50.263 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+16-Jul-2018 07:11:50.264 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+16-Jul-2018 07:11:50.264 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+16-Jul-2018 07:11:50.265 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+16-Jul-2018 07:12:04.204 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+16-Jul-2018 07:12:04.206 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+16-Jul-2018 07:12:04.207 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+16-Jul-2018 07:12:22.678 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+16-Jul-2018 07:12:23.949 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext
+17-Jul-2018 00:26:29.701 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'spring'
+17-Jul-2018 00:26:29.924 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
+17-Jul-2018 00:29:13.387 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+17-Jul-2018 00:29:13.419 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+17-Jul-2018 00:29:13.421 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+17-Jul-2018 00:29:13.422 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+17-Jul-2018 00:29:13.423 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+17-Jul-2018 00:29:13.424 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+17-Jul-2018 00:29:13.425 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+17-Jul-2018 00:29:13.425 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+17-Jul-2018 00:29:13.425 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+17-Jul-2018 00:29:27.459 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+17-Jul-2018 00:29:27.462 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+17-Jul-2018 00:29:27.463 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+17-Jul-2018 00:29:44.443 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+17-Jul-2018 00:29:46.035 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext
+17-Jul-2018 04:31:56.363 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'spring'
+17-Jul-2018 04:31:56.534 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
+17-Jul-2018 04:34:52.082 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+17-Jul-2018 04:34:52.121 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+17-Jul-2018 04:34:52.123 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+17-Jul-2018 04:34:52.124 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+17-Jul-2018 04:34:52.125 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+17-Jul-2018 04:34:52.126 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+17-Jul-2018 04:34:52.127 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+17-Jul-2018 04:34:52.127 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+17-Jul-2018 04:34:52.128 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+17-Jul-2018 04:35:05.933 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+17-Jul-2018 04:35:05.936 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+17-Jul-2018 04:35:05.936 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+17-Jul-2018 04:35:22.011 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+17-Jul-2018 04:35:23.982 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext
+17-Jul-2018 05:07:52.379 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'spring'
+17-Jul-2018 05:07:52.615 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
+17-Jul-2018 05:09:58.045 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+17-Jul-2018 05:09:58.096 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+17-Jul-2018 05:09:58.099 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+17-Jul-2018 05:09:58.100 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+17-Jul-2018 05:09:58.100 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+17-Jul-2018 05:09:58.101 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+17-Jul-2018 05:09:58.102 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+17-Jul-2018 05:09:58.103 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+17-Jul-2018 05:09:58.103 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+17-Jul-2018 05:10:12.282 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+17-Jul-2018 05:10:12.285 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+17-Jul-2018 05:10:12.285 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+17-Jul-2018 05:10:30.550 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+17-Jul-2018 05:10:32.036 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext
+18-Jul-2018 00:15:42.911 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'spring'
+18-Jul-2018 00:15:43.104 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
+18-Jul-2018 00:16:56.335 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+18-Jul-2018 00:16:56.375 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+18-Jul-2018 00:16:56.377 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+18-Jul-2018 00:16:56.378 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+18-Jul-2018 00:16:56.379 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+18-Jul-2018 00:16:56.379 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+18-Jul-2018 00:16:56.380 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+18-Jul-2018 00:16:56.381 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+18-Jul-2018 00:16:56.381 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+18-Jul-2018 00:17:10.306 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+18-Jul-2018 00:17:10.308 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+18-Jul-2018 00:17:10.308 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+18-Jul-2018 00:17:27.563 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+18-Jul-2018 00:17:29.219 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext
+18-Jul-2018 04:54:38.361 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'spring'
+18-Jul-2018 04:54:38.546 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
+18-Jul-2018 04:55:59.974 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+18-Jul-2018 04:56:00.005 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+18-Jul-2018 04:56:00.038 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+18-Jul-2018 04:56:00.039 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+18-Jul-2018 04:56:00.040 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+18-Jul-2018 04:56:00.041 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+18-Jul-2018 04:56:00.042 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+18-Jul-2018 04:56:00.044 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+18-Jul-2018 04:56:00.044 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+18-Jul-2018 04:56:14.417 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+18-Jul-2018 04:56:14.419 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+18-Jul-2018 04:56:14.420 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+18-Jul-2018 04:56:32.505 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+18-Jul-2018 04:56:33.907 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext
+18-Jul-2018 06:38:44.643 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'spring'
+18-Jul-2018 06:38:44.862 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
+18-Jul-2018 06:40:10.163 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+18-Jul-2018 06:40:10.204 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+18-Jul-2018 06:40:10.207 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+18-Jul-2018 06:40:10.208 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+18-Jul-2018 06:40:10.210 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+18-Jul-2018 06:40:10.211 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+18-Jul-2018 06:40:10.212 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+18-Jul-2018 06:40:10.213 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+18-Jul-2018 06:40:10.214 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+18-Jul-2018 06:40:24.430 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+18-Jul-2018 06:40:24.432 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+18-Jul-2018 06:40:24.433 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+18-Jul-2018 06:40:41.495 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+18-Jul-2018 06:40:43.362 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext
+18-Jul-2018 06:54:50.925 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'spring'
+18-Jul-2018 06:54:51.118 INFO [localhost-startStop-2] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
+18-Jul-2018 06:57:00.499 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring FrameworkServlet 'spring'
+18-Jul-2018 06:57:00.540 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${LOGIN_CONFIG_URL}
+18-Jul-2018 06:57:00.542 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${LOGIN_CONFIG_PATH}/login.yml
+18-Jul-2018 06:57:00.543 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/login.yml
+18-Jul-2018 06:57:00.544 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: ${UAA_CONFIG_URL}
+18-Jul-2018 06:57:00.544 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_FILE}
+18-Jul-2018 06:57:00.545 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:${UAA_CONFIG_PATH}/uaa.yml
+18-Jul-2018 06:57:00.546 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Testing for YAML resources at: file:/var/vcap/jobs/uaa/config/uaa.yml
+18-Jul-2018 06:57:00.546 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading YAML environment properties from location: [class path resource [uaa.yml], URL [file:/var/vcap/jobs/uaa/config/uaa.yml]]
+18-Jul-2018 06:57:14.584 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting active profiles: postgresql
+18-Jul-2018 06:57:14.587 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Setting Log Config Location: /var/vcap/jobs/uaa/config/log4j.properties based on logging.config setting.
+18-Jul-2018 06:57:14.587 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Loading log4j config from location: /var/vcap/jobs/uaa/config/log4j.properties
+18-Jul-2018 06:57:31.480 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+18-Jul-2018 06:57:33.113 INFO [localhost-startStop-1] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext

@@ -1,0 +1,478 @@
+[2018-07-16 06:18:29.133] uaa - 12640 [localhost-startStop-1] ....  INFO --- Audit: UserCreatedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 06:18:29.400] uaa - 12640 [localhost-startStop-1] ....  INFO --- Audit: UserCreatedEvent ('["user_id=438152e2-0a8a-4466-9177-f4e483a9d29d","username=marissa"]'): principal=438152e2-0a8a-4466-9177-f4e483a9d29d, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 06:18:29.405] uaa - 12640 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 06:18:29.422] uaa - 12640 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 06:18:29.725] uaa - 12640 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 06:22:30.456] uaa - 12640 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-16 06:22:30.458] uaa - 12640 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: UserAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-16 06:24:10.987] uaa - 12640 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=admin, origin=[182.252.135.136], identityZoneId=[uaa]
+
+[2018-07-16 06:24:10.989] uaa - 12640 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 06:24:38.517] uaa - 12640 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=admin, origin=[182.252.135.136], identityZoneId=[uaa]
+
+[2018-07-16 06:24:38.517] uaa - 12640 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 06:24:45.333] uaa - 12640 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=admin, origin=[182.252.135.136], identityZoneId=[uaa]
+
+[2018-07-16 06:24:45.334] uaa - 12640 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 06:24:53.709] uaa - 12640 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=admin, origin=[61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-16 06:24:53.710] uaa - 12640 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=admin, origin=[remoteAddress=61.40.138.66, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 06:25:53.980] uaa - 12640 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 06:25:54.071] uaa - 12640 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","clients.secret","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=182.252.135.136, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-16 06:29:39.050] uaa - 12640 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=61.40.138.66, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 06:29:39.065] uaa - 12640 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","clients.secret","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=61.40.138.66, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-16 06:35:48.326] uaa - 12640 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: IdentityProviderAuthenticationFailure ('admin'): principal=null, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-16 06:35:48.327] uaa - 12640 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: UserAuthenticationFailure ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-16 06:35:48.437] uaa - 12640 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=admin, origin=[61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-16 06:36:01.748] uaa - 12640 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-16 06:36:01.748] uaa - 12640 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-16 07:06:37.555] uaa - 12640 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 07:06:37.562] uaa - 12640 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: UserNotFound (''): principal=76rmLzN6H3CFn29DmW/KWyQeB4Y=, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 07:06:37.562] uaa - 12640 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=kubo, origin=[182.252.135.136], identityZoneId=[uaa]
+
+[2018-07-16 07:12:14.023] uaa - 19017 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 07:12:14.191] uaa - 19017 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-16 07:12:14.262] uaa - 19017 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=438152e2-0a8a-4466-9177-f4e483a9d29d","username=marissa"]'): principal=438152e2-0a8a-4466-9177-f4e483a9d29d, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 07:12:14.374] uaa - 19017 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=438152e2-0a8a-4466-9177-f4e483a9d29d, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-16 07:12:14.380] uaa - 19017 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 07:12:14.401] uaa - 19017 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 07:12:14.756] uaa - 19017 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-16 07:12:40.238] uaa - 19017 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 07:12:40.249] uaa - 19017 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: UserNotFound (''): principal=76rmLzN6H3CFn29DmW/KWyQeB4Y=, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 07:12:40.250] uaa - 19017 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=kubo, origin=[182.252.135.136], identityZoneId=[uaa]
+
+[2018-07-16 07:22:33.217] uaa - 19017 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 07:22:33.368] uaa - 19017 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('marissa'): principal=438152e2-0a8a-4466-9177-f4e483a9d29d, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-16 07:22:33.369] uaa - 19017 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: UserAuthenticationSuccess ('marissa'): principal=438152e2-0a8a-4466-9177-f4e483a9d29d, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 07:23:14.102] uaa - 19017 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 07:23:14.227] uaa - 19017 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-16 07:23:14.227] uaa - 19017 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: UserAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 23:39:40.999] uaa - 19017 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-16 23:39:41.103] uaa - 19017 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","clients.secret","openid","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=182.252.135.136, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-16 23:40:25.307] uaa - 19017 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:438152e2-0a8a-4466-9177-f4e483a9d29d'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-16 23:40:25.316] uaa - 19017 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: UserDeletedEvent ('["user_id=438152e2-0a8a-4466-9177-f4e483a9d29d","username=marissa"]'): principal=438152e2-0a8a-4466-9177-f4e483a9d29d, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 00:29:36.704] uaa - 31567 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 00:29:36.875] uaa - 31567 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-17 00:29:37.125] uaa - 31567 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 00:29:37.146] uaa - 31567 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 00:29:37.468] uaa - 31567 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 01:41:16.213] uaa - 31567 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-17 01:41:16.361] uaa - 31567 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","clients.secret","openid","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=182.252.135.136, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-17 01:43:42.599] uaa - 31567 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-17 01:43:42.600] uaa - 31567 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: UserAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-17 03:27:12.032] uaa - 31567 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-17 03:27:12.032] uaa - 31567 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: UserAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-17 04:35:15.182] uaa - 6713 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 04:35:15.331] uaa - 6713 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-17 04:35:15.540] uaa - 6713 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 04:35:15.559] uaa - 6713 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 04:35:15.869] uaa - 6713 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 04:50:13.039] uaa - 6713 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: UserCreatedEvent ('["user_id=530d4c6d-3d81-4abc-b36c-56b650206fd2","username=abhisr"]'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 05:10:22.285] uaa - 12890 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 05:10:22.448] uaa - 12890 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-17 05:10:23.051] uaa - 12890 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 05:10:23.080] uaa - 12890 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 05:10:23.426] uaa - 12890 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-17 05:27:32.930] uaa - 12890 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: GroupModifiedEvent ('{"group_name":"scim.write","members":["530d4c6d-3d81-4abc-b36c-56b650206fd2","8394dfe8-3386-4457-9687-32979a72b7ec"]}'): principal=ec547a9d-4d60-4d24-84f8-84d3281e51fb, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 05:27:50.643] uaa - 12890 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: GroupModifiedEvent ('{"group_name":"uaa.admin","members":["530d4c6d-3d81-4abc-b36c-56b650206fd2","8394dfe8-3386-4457-9687-32979a72b7ec"]}'): principal=574b7dfd-cf7f-4339-afae-919981a57d98, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 05:28:09.307] uaa - 12890 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: GroupModifiedEvent ('{"group_name":"scim.read","members":["530d4c6d-3d81-4abc-b36c-56b650206fd2","8394dfe8-3386-4457-9687-32979a72b7ec"]}'): principal=263669c5-ab8f-4067-8f82-c80ab3d3a2d9, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 05:28:25.216] uaa - 12890 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: GroupModifiedEvent ('{"group_name":"doppler.firehose","members":["530d4c6d-3d81-4abc-b36c-56b650206fd2","8394dfe8-3386-4457-9687-32979a72b7ec"]}'): principal=accef978-1942-4e9e-840b-a8ef52140e9d, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 06:19:18.311] uaa - 12890 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-17 06:19:18.382] uaa - 12890 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","clients.secret","openid","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=182.252.135.136, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-17 06:19:19.077] uaa - 12890 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: ClientCreateSuccess ('{"scopes":["cloud_controller.read","routing.router_groups.read","password.write","cloud_controller.write","openid","doppler.firehose","uaa.admin","scim.write","scim.read","cloud_controller.admin","uaa.user"],"authorities":["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]}'): principal=kubo, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 06:34:36.891] uaa - 12890 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: ClientUpdateSuccess ('{"scopes":["uaa.none"],"authorities":["clients.read","clients.secret","openid","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]}'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 06:35:26.414] uaa - 12890 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: ClientUpdateSuccess ('{"scopes":["cloud_controller.read","routing.router_groups.read","password.write","cloud_controller.write","openid","doppler.firehose","uaa.admin","scim.write","scim.read","cloud_controller.admin","uaa.user"],"authorities":["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]}'): principal=kubo, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 07:18:56.650] uaa - 12890 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 07:18:56.664] uaa - 12890 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]'): principal=kubo, origin=[caller=kubo, details=(remoteAddress=182.252.135.136, clientId=kubo)], identityZoneId=[uaa]
+
+[2018-07-17 07:27:55.144] uaa - 12890 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: UserModifiedEvent ('["user_id=530d4c6d-3d81-4abc-b36c-56b650206fd2","username=abhisr"]'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[client=kubo, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=kubo, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-17 07:33:33.542] uaa - 12890 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 07:33:33.683] uaa - 12890 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-17 07:33:33.684] uaa - 12890 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: UserAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 07:33:33.795] uaa - 12890 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: TokenIssuedEvent ('["openid","uaa.admin","scim.read","uaa.user","cloud_controller.read","password.write","cloud_controller.write","doppler.firehose","scim.write"]'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[client=kubo, user=abhisr], identityZoneId=[uaa]
+
+[2018-07-17 07:36:04.351] uaa - 12890 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=abhisr, origin=[61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-17 07:36:04.357] uaa - 12890 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=abhisr, origin=[remoteAddress=61.40.138.66, clientId=abhisr], identityZoneId=[uaa]
+
+[2018-07-17 07:36:24.460] uaa - 12890 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=abhisr, origin=[61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-17 07:36:24.460] uaa - 12890 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=abhisr, origin=[remoteAddress=61.40.138.66, clientId=abhisr], identityZoneId=[uaa]
+
+[2018-07-17 08:01:12.748] uaa - 12890 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 08:01:12.882] uaa - 12890 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-17 08:01:12.883] uaa - 12890 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: UserAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 08:01:12.947] uaa - 12890 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: TokenIssuedEvent ('["openid","uaa.admin","scim.read","uaa.user","cloud_controller.read","password.write","cloud_controller.write","doppler.firehose","scim.write"]'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[client=kubo, user=abhisr], identityZoneId=[uaa]
+
+[2018-07-17 08:05:37.957] uaa - 12890 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 08:05:38.087] uaa - 12890 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-17 08:05:38.088] uaa - 12890 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: UserAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 08:05:38.189] uaa - 12890 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: TokenIssuedEvent ('["openid","uaa.admin","scim.read","uaa.user","cloud_controller.read","password.write","cloud_controller.write","doppler.firehose","scim.write"]'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[client=kubo, user=abhisr], identityZoneId=[uaa]
+
+[2018-07-17 08:54:57.324] uaa - 12890 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=61.40.138.66, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 08:55:05.352] uaa - 12890 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=61.40.138.66, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 08:55:25.822] uaa - 12890 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=abhisr@crossent.com, origin=[61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-17 08:55:25.823] uaa - 12890 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=abhisr@crossent.com, origin=[remoteAddress=61.40.138.66, clientId=abhisr@crossent.com], identityZoneId=[uaa]
+
+[2018-07-17 08:56:05.904] uaa - 12890 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=abhisr@crossent.com, origin=[61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-17 08:56:05.905] uaa - 12890 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=abhisr@crossent.com, origin=[remoteAddress=61.40.138.66, clientId=abhisr@crossent.com], identityZoneId=[uaa]
+
+[2018-07-17 08:56:13.111] uaa - 12890 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=61.40.138.66, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 10:30:05.692] uaa - 12890 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=61.40.138.66, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-17 11:21:51.087] uaa - 12890 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=61.40.138.66, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-18 00:17:19.721] uaa - 25588 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 00:17:19.873] uaa - 25588 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-18 00:17:20.072] uaa - 25588 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 00:17:20.096] uaa - 25588 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 00:17:20.524] uaa - 25588 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 00:19:09.502] uaa - 25588 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-18 00:19:09.618] uaa - 25588 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","clients.secret","openid","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=182.252.135.136, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-18 00:23:45.960] uaa - 25588 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-18 00:23:45.993] uaa - 25588 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]'): principal=kubo, origin=[caller=kubo, details=(remoteAddress=182.252.135.136, clientId=kubo)], identityZoneId=[uaa]
+
+[2018-07-18 00:37:37.228] uaa - 25588 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: UserCreatedEvent ('["user_id=8f042016-2661-4762-b566-15503678b09e","username=harbor"]'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[client=kubo, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=kubo, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 00:38:20.309] uaa - 25588 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: GroupModifiedEvent ('{"group_name":"scim.write","members":["530d4c6d-3d81-4abc-b36c-56b650206fd2","8394dfe8-3386-4457-9687-32979a72b7ec","8f042016-2661-4762-b566-15503678b09e"]}'): principal=ec547a9d-4d60-4d24-84f8-84d3281e51fb, origin=[client=kubo, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=kubo, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 00:39:43.798] uaa - 25588 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: GroupModifiedEvent ('{"group_name":"scim.read","members":["530d4c6d-3d81-4abc-b36c-56b650206fd2","8394dfe8-3386-4457-9687-32979a72b7ec","8f042016-2661-4762-b566-15503678b09e"]}'): principal=263669c5-ab8f-4067-8f82-c80ab3d3a2d9, origin=[client=kubo, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=kubo, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 00:39:58.564] uaa - 25588 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: GroupModifiedEvent ('{"group_name":"uaa.admin","members":["530d4c6d-3d81-4abc-b36c-56b650206fd2","8394dfe8-3386-4457-9687-32979a72b7ec","8f042016-2661-4762-b566-15503678b09e"]}'): principal=574b7dfd-cf7f-4339-afae-919981a57d98, origin=[client=kubo, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=kubo, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 00:41:12.211] uaa - 25588 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: GroupModifiedEvent ('{"group_name":"doppler.firehose","members":["530d4c6d-3d81-4abc-b36c-56b650206fd2","8394dfe8-3386-4457-9687-32979a72b7ec","8f042016-2661-4762-b566-15503678b09e"]}'): principal=accef978-1942-4e9e-840b-a8ef52140e9d, origin=[client=kubo, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=kubo, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 00:44:12.400] uaa - 25588 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-18 00:44:12.414] uaa - 25588 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","clients.secret","openid","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=182.252.135.136, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-18 00:44:13.043] uaa - 25588 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: ClientCreateSuccess ('{"scopes":["cloud_controller.read","routing.router_groups.read","password.write","cloud_controller.write","openid","doppler.firehose","uaa.admin","scim.write","scim.read","cloud_controller.admin","uaa.user"],"authorities":["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]}'): principal=harbor, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 00:44:52.998] uaa - 25588 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=harbor, origin=[remoteAddress=182.252.135.136, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 00:44:53.010] uaa - 25588 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]'): principal=harbor, origin=[caller=harbor, details=(remoteAddress=182.252.135.136, clientId=harbor)], identityZoneId=[uaa]
+
+[2018-07-18 00:54:12.059] uaa - 25588 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-18 00:54:12.211] uaa - 25588 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 00:54:12.212] uaa - 25588 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: UserAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-18 00:54:12.291] uaa - 25588 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: TokenIssuedEvent ('["openid","uaa.admin","scim.read","uaa.user","cloud_controller.read","password.write","cloud_controller.write","doppler.firehose","scim.write"]'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[client=kubo, user=abhisr], identityZoneId=[uaa]
+
+[2018-07-18 00:54:34.637] uaa - 25588 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-18 00:54:34.761] uaa - 25588 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 00:54:34.761] uaa - 25588 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: UserAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.136, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-18 00:54:34.832] uaa - 25588 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: TokenIssuedEvent ('["openid","uaa.admin","scim.read","uaa.user","cloud_controller.read","password.write","cloud_controller.write","doppler.firehose","scim.write"]'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[client=kubo, user=abhisr], identityZoneId=[uaa]
+
+[2018-07-18 02:28:47.932] uaa - 25588 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=harbor, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 02:28:47.950] uaa - 25588 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]'): principal=harbor, origin=[client=harbor], identityZoneId=[uaa]
+
+[2018-07-18 02:28:48.187] uaa - 25588 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.springframework.security.oauth2.provider.client.BaseClientDetails; ID:harbor'): principal=harbor, origin=[client=harbor, details=(remoteAddress=182.252.135.134, tokenType=BearertokenValue=<TOKEN>, sub=harbor, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 02:28:48.221] uaa - 25588 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: ClientDeleteSuccess ('{"scopes":["cloud_controller.read","routing.router_groups.read","password.write","cloud_controller.write","openid","doppler.firehose","uaa.admin","scim.write","scim.read","cloud_controller.admin","uaa.user"],"authorities":["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]}'): principal=harbor, origin=[client=harbor, details=(remoteAddress=182.252.135.134, tokenType=BearertokenValue=<TOKEN>, sub=harbor, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 02:29:19.688] uaa - 25588 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=106.247.31.88, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 02:29:19.689] uaa - 25588 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=106.247.31.88, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-18 02:29:54.866] uaa - 25588 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=106.247.31.88], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 02:29:54.866] uaa - 25588 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=106.247.31.88], identityZoneId=[uaa]
+
+[2018-07-18 02:37:03.464] uaa - 25588 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-18 02:37:03.478] uaa - 25588 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","clients.secret","openid","clients.write","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=182.252.135.136, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-18 02:41:43.829] uaa - 25588 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=harbor, origin=[182.252.135.134], identityZoneId=[uaa]
+
+[2018-07-18 02:41:43.830] uaa - 25588 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: ClientAuthenticationFailure ('Bad credentials'): principal=harbor, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 02:44:55.163] uaa - 25588 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=kubo, origin=[remoteAddress=182.252.135.134, clientId=kubo], identityZoneId=[uaa]
+
+[2018-07-18 02:44:55.174] uaa - 25588 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","scim.userids","password.write","clients.secret","oauth.login","clients.write","doppler.firehose","uaa.admin","scim.write","scim.read"]'): principal=kubo, origin=[client=kubo], identityZoneId=[uaa]
+
+[2018-07-18 02:44:55.552] uaa - 25588 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: ClientCreateSuccess ('{"scopes":["openid"],"authorities":["clients.read","clients.secret","uaa.resource","openid","scim.write","scim.read"]}'): principal=harbor, origin=[client=kubo, details=(remoteAddress=182.252.135.134, tokenType=BearertokenValue=<TOKEN>, sub=kubo, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 02:46:57.731] uaa - 25588 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=harbor, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 02:46:57.875] uaa - 25588 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 02:46:57.875] uaa - 25588 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: UserAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 02:46:57.937] uaa - 25588 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: TokenIssuedEvent ('["openid"]'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[client=harbor, user=harbor], identityZoneId=[uaa]
+
+[2018-07-18 04:56:23.898] uaa - 585 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 04:56:24.072] uaa - 585 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-18 04:56:24.778] uaa - 585 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 04:56:24.801] uaa - 585 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 04:56:25.125] uaa - 585 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 05:01:39.357] uaa - 585 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.136, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-18 05:01:39.437] uaa - 585 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","scim.userids","password.write","clients.secret","openid","oauth.login","clients.write","doppler.firehose","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[caller=admin, details=(remoteAddress=182.252.135.136, clientId=admin)], identityZoneId=[uaa]
+
+[2018-07-18 05:02:01.756] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: IdentityProviderAuthenticationFailure ('admin'): principal=null, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 05:02:01.757] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserAuthenticationFailure ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-18 05:02:01.777] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=admin, origin=[61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-18 05:03:33.262] uaa - 585 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 05:03:33.263] uaa - 585 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: UserAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-18 05:11:14.498] uaa - 585 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.134, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-18 05:11:14.514] uaa - 585 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","scim.userids","password.write","clients.secret","openid","oauth.login","clients.write","doppler.firehose","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[client=admin], identityZoneId=[uaa]
+
+[2018-07-18 05:11:14.869] uaa - 585 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.springframework.security.oauth2.provider.client.BaseClientDetails; ID:harbor'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.134, tokenType=BearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 05:11:14.896] uaa - 585 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: ClientDeleteSuccess ('{"scopes":["openid"],"authorities":["clients.read","clients.secret","uaa.resource","openid","scim.write","scim.read"]}'): principal=harbor, origin=[client=admin, details=(remoteAddress=182.252.135.134, tokenType=BearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 05:11:15.206] uaa - 585 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: ClientCreateSuccess ('{"scopes":["openid"],"authorities":["clients.read","clients.secret","uaa.resource","openid","scim.write","scim.read"]}'): principal=harbor, origin=[client=admin, details=(remoteAddress=182.252.135.134, tokenType=BearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 05:15:05.327] uaa - 585 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=harbor, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:15:05.472] uaa - 585 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 05:15:05.472] uaa - 585 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: UserAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:15:05.555] uaa - 585 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: TokenIssuedEvent ('["openid"]'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[client=harbor, user=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:28:18.753] uaa - 585 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 05:28:18.753] uaa - 585 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: UserAuthenticationSuccess ('admin'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-18 05:33:18.930] uaa - 585 [https-jsse-nio-8443-exec-7] ....  INFO --- Audit: UserCreatedEvent ('["user_id=f32f78d2-3419-4fb2-854c-2af2493ea1d4","username=abhisr.kubo@gmail.com"]'): principal=f32f78d2-3419-4fb2-854c-2af2493ea1d4, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@1de6: RemoteIpAddress: 61.40.138.66; SessionId: null)], identityZoneId=[uaa]
+
+[2018-07-18 05:36:05.209] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:f32f78d2-3419-4fb2-854c-2af2493ea1d4'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 05:36:05.219] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserDeletedEvent ('["user_id=f32f78d2-3419-4fb2-854c-2af2493ea1d4","username=abhisr.kubo@gmail.com"]'): principal=f32f78d2-3419-4fb2-854c-2af2493ea1d4, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 05:44:30.758] uaa - 585 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=harbor, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:44:30.770] uaa - 585 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: UserNotFound (''): principal=76rmLzN6H3CFn29DmW/KWyQeB4Y=, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:44:30.770] uaa - 585 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: PrincipalAuthenticationFailure ('null'): principal=kubo, origin=[182.252.135.134], identityZoneId=[uaa]
+
+[2018-07-18 05:44:53.373] uaa - 585 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=harbor, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:44:53.511] uaa - 585 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 05:44:53.512] uaa - 585 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: UserAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:44:53.575] uaa - 585 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: TokenIssuedEvent ('["openid"]'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[client=harbor, user=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:45:48.961] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=harbor, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:45:49.084] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 05:45:49.084] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=182.252.135.134, clientId=harbor], identityZoneId=[uaa]
+
+[2018-07-18 05:45:49.133] uaa - 585 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: TokenIssuedEvent ('["openid"]'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[client=harbor, user=abhisr], identityZoneId=[uaa]
+
+[2018-07-18 06:40:34.114] uaa - 7251 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 06:40:34.288] uaa - 7251 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-18 06:40:34.575] uaa - 7251 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 06:40:34.597] uaa - 7251 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 06:40:34.948] uaa - 7251 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 06:57:24.136] uaa - 13256 [localhost-startStop-1] ....  INFO --- Audit: UserModifiedEvent ('["user_id=8394dfe8-3386-4457-9687-32979a72b7ec","username=admin"]'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 06:57:24.316] uaa - 13256 [localhost-startStop-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8394dfe8-3386-4457-9687-32979a72b7ec, origin=[caller=uaa-system, details=(uaa-system)], identityZoneId=[uaa]
+
+[2018-07-18 06:57:24.641] uaa - 13256 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=c6a42a15-3454-4afb-a45f-0605669f538f; type=ldap; origin=ldap; zone=uaa'): principal=IdentityProvider{id='c6a42a15-3454-4afb-a45f-0605669f538f', originKey='ldap', name='UAA LDAP Provider', type='ldap', active=false}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 06:57:24.662] uaa - 13256 [localhost-startStop-1] ....  INFO --- Audit: IdentityProviderModifiedEvent ('id=a73de3b7-fc00-4a7c-b5eb-25e15b805c0a; type=uaa; origin=uaa; zone=uaa'): principal=IdentityProvider{id='a73de3b7-fc00-4a7c-b5eb-25e15b805c0a', originKey='uaa', name='uaa', type='uaa', active=true}, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 06:57:25.000] uaa - 13256 [localhost-startStop-1] ....  INFO --- Audit: IdentityZoneModifiedEvent ('id=uaa; subdomain='): principal=org.cloudfoundry.identity.uaa.zone.IdentityZone@1c374, origin=[caller=null], identityZoneId=[uaa]
+
+[2018-07-18 07:19:44.348] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: UserCreatedEvent ('["user_id=d0605322-9586-47d1-ad8c-27760f48ac00","username=abhisr.kubo@gmail.com"]'): principal=d0605322-9586-47d1-ad8c-27760f48ac00, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@ffffa64e: RemoteIpAddress: 61.40.138.66; SessionId: B59469C5E65B602702136467887CD7F7)], identityZoneId=[uaa]
+
+[2018-07-18 07:21:55.402] uaa - 13256 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:d0605322-9586-47d1-ad8c-27760f48ac00'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 07:21:55.413] uaa - 13256 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: UserDeletedEvent ('["user_id=d0605322-9586-47d1-ad8c-27760f48ac00","username=abhisr.kubo@gmail.com"]'): principal=d0605322-9586-47d1-ad8c-27760f48ac00, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 07:23:47.579] uaa - 13256 [https-jsse-nio-8443-exec-2] ....  INFO --- Audit: UserCreatedEvent ('["user_id=0250a75b-2006-453f-9201-85de0ca09b7b","username=abhisr.kubo@gmail.com"]'): principal=0250a75b-2006-453f-9201-85de0ca09b7b, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@ffffa64e: RemoteIpAddress: 61.40.138.66; SessionId: B59469C5E65B602702136467887CD7F7)], identityZoneId=[uaa]
+
+[2018-07-18 07:24:25.145] uaa - 13256 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:0250a75b-2006-453f-9201-85de0ca09b7b'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 07:24:25.155] uaa - 13256 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: UserDeletedEvent ('["user_id=0250a75b-2006-453f-9201-85de0ca09b7b","username=abhisr.kubo@gmail.com"]'): principal=0250a75b-2006-453f-9201-85de0ca09b7b, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 07:25:48.968] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: UserCreatedEvent ('["user_id=d3e004da-ca6f-4499-a4fe-c43894df05da","username=abhisr.kubo@gmail.com"]'): principal=d3e004da-ca6f-4499-a4fe-c43894df05da, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@7798: RemoteIpAddress: 61.40.138.66; SessionId: D1A58719FA1491A486565C48A90F230A)], identityZoneId=[uaa]
+
+[2018-07-18 07:26:44.955] uaa - 13256 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:d3e004da-ca6f-4499-a4fe-c43894df05da'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 07:26:44.962] uaa - 13256 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: UserDeletedEvent ('["user_id=d3e004da-ca6f-4499-a4fe-c43894df05da","username=abhisr.kubo@gmail.com"]'): principal=d3e004da-ca6f-4499-a4fe-c43894df05da, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 07:26:50.131] uaa - 13256 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: UserCreatedEvent ('["user_id=c846ad1c-2fb5-4724-b109-7896f8c38eef","username=abhisr.kubo@gmail.com"]'): principal=c846ad1c-2fb5-4724-b109-7896f8c38eef, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@7798: RemoteIpAddress: 61.40.138.66; SessionId: D1A58719FA1491A486565C48A90F230A)], identityZoneId=[uaa]
+
+[2018-07-18 07:27:15.212] uaa - 13256 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 07:27:15.212] uaa - 13256 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
+[2018-07-18 07:27:45.929] uaa - 13256 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[caller=harbor, details=(remoteAddress=61.40.138.66, sessionId=<SESSION>)], identityZoneId=[uaa]
+
+[2018-07-18 07:27:45.931] uaa - 13256 [https-jsse-nio-8443-exec-9] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[caller=harbor, details=(remoteAddress=61.40.138.66, sessionId=<SESSION>)], identityZoneId=[uaa]
+
+[2018-07-18 07:28:10.639] uaa - 13256 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=61.40.138.66], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 07:28:10.640] uaa - 13256 [https-jsse-nio-8443-exec-10] ....  INFO --- Audit: UserAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-18 07:28:29.233] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[caller=harbor, details=(remoteAddress=61.40.138.66)], identityZoneId=[uaa]
+
+[2018-07-18 07:28:29.234] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: PasswordChangeSuccess ('Password changed'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[caller=harbor, details=(remoteAddress=61.40.138.66)], identityZoneId=[uaa]
+
+[2018-07-18 07:29:26.381] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=61.40.138.66], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 07:29:26.381] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: UserAuthenticationSuccess ('harbor'): principal=8f042016-2661-4762-b566-15503678b09e, origin=[remoteAddress=61.40.138.66], identityZoneId=[uaa]
+
+[2018-07-18 07:30:23.242] uaa - 13256 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: ClientAuthenticationSuccess ('Client authentication success'): principal=admin, origin=[remoteAddress=182.252.135.134, clientId=admin], identityZoneId=[uaa]
+
+[2018-07-18 07:30:23.318] uaa - 13256 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: TokenIssuedEvent ('["clients.read","scim.userids","password.write","clients.secret","openid","oauth.login","clients.write","doppler.firehose","uaa.admin","clients.admin","scim.write","scim.read"]'): principal=admin, origin=[client=admin], identityZoneId=[uaa]
+
+[2018-07-18 07:30:23.531] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.springframework.security.oauth2.provider.client.BaseClientDetails; ID:harbor'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.134, tokenType=BearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 07:30:23.601] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: ClientDeleteSuccess ('{"scopes":["openid"],"authorities":["clients.read","clients.secret","uaa.resource","openid","scim.write","scim.read"]}'): principal=harbor, origin=[client=admin, details=(remoteAddress=182.252.135.134, tokenType=BearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:03:36.116] uaa - 13256 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:c846ad1c-2fb5-4724-b109-7896f8c38eef'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:03:36.124] uaa - 13256 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: UserDeletedEvent ('["user_id=c846ad1c-2fb5-4724-b109-7896f8c38eef","username=abhisr.kubo@gmail.com"]'): principal=c846ad1c-2fb5-4724-b109-7896f8c38eef, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:03:53.145] uaa - 13256 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserCreatedEvent ('["user_id=e5a7baf3-6984-4f2f-9121-6873e8ccbe9f","username=abhisr.kubo@gmail.com"]'): principal=e5a7baf3-6984-4f2f-9121-6873e8ccbe9f, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@1de6: RemoteIpAddress: 61.40.138.66; SessionId: null)], identityZoneId=[uaa]
+
+[2018-07-18 08:10:27.769] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:e5a7baf3-6984-4f2f-9121-6873e8ccbe9f'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:10:27.775] uaa - 13256 [https-jsse-nio-8443-exec-1] ....  INFO --- Audit: UserDeletedEvent ('["user_id=e5a7baf3-6984-4f2f-9121-6873e8ccbe9f","username=abhisr.kubo@gmail.com"]'): principal=e5a7baf3-6984-4f2f-9121-6873e8ccbe9f, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:10:56.634] uaa - 13256 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: UserCreatedEvent ('["user_id=ae784405-dda5-4f65-ba47-a06cce6029de","username=abhisr.kubo@gmail.com"]'): principal=ae784405-dda5-4f65-ba47-a06cce6029de, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@ffff4c9c: RemoteIpAddress: 61.40.138.66; SessionId: C0DA88D6934E337A023931DE87A76C0A)], identityZoneId=[uaa]
+
+[2018-07-18 08:16:45.210] uaa - 13256 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:ae784405-dda5-4f65-ba47-a06cce6029de'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:16:45.218] uaa - 13256 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserDeletedEvent ('["user_id=ae784405-dda5-4f65-ba47-a06cce6029de","username=abhisr.kubo@gmail.com"]'): principal=ae784405-dda5-4f65-ba47-a06cce6029de, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:16:49.086] uaa - 13256 [https-jsse-nio-8443-exec-3] ....  INFO --- Audit: UserCreatedEvent ('["user_id=9d453405-233f-44a6-89c7-4c338987ac20","username=abhisr.kubo@gmail.com"]'): principal=9d453405-233f-44a6-89c7-4c338987ac20, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@ffff4c9c: RemoteIpAddress: 61.40.138.66; SessionId: C0DA88D6934E337A023931DE87A76C0A)], identityZoneId=[uaa]
+
+[2018-07-18 08:24:16.729] uaa - 13256 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:9d453405-233f-44a6-89c7-4c338987ac20'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:24:16.736] uaa - 13256 [https-jsse-nio-8443-exec-8] ....  INFO --- Audit: UserDeletedEvent ('["user_id=9d453405-233f-44a6-89c7-4c338987ac20","username=abhisr.kubo@gmail.com"]'): principal=9d453405-233f-44a6-89c7-4c338987ac20, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:24:29.979] uaa - 13256 [https-jsse-nio-8443-exec-5] ....  INFO --- Audit: UserCreatedEvent ('["user_id=3c565a75-5e6f-43b9-909b-d338105deda3","username=abhisr.kubo@gmail.com"]'): principal=3c565a75-5e6f-43b9-909b-d338105deda3, origin=[caller=anonymousUser, details=(org.springframework.security.web.authentication.WebAuthenticationDetails@ffff4c9c: RemoteIpAddress: 61.40.138.66; SessionId: C0DA88D6934E337A023931DE87A76C0A)], identityZoneId=[uaa]
+
+[2018-07-18 08:24:36.267] uaa - 13256 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: EntityDeletedEvent ('Class:org.cloudfoundry.identity.uaa.scim.ScimUser; ID:3c565a75-5e6f-43b9-909b-d338105deda3'): principal=admin, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:24:36.273] uaa - 13256 [https-jsse-nio-8443-exec-4] ....  INFO --- Audit: UserDeletedEvent ('["user_id=3c565a75-5e6f-43b9-909b-d338105deda3","username=abhisr.kubo@gmail.com"]'): principal=3c565a75-5e6f-43b9-909b-d338105deda3, origin=[client=admin, details=(remoteAddress=182.252.135.136, tokenType=bearertokenValue=<TOKEN>, sub=admin, iss=https://182.252.135.137:8443/oauth/token)], identityZoneId=[uaa]
+
+[2018-07-18 08:50:43.753] uaa - 13256 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: IdentityProviderAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa], authenticationType=[uaa]
+
+[2018-07-18 08:50:43.753] uaa - 13256 [https-jsse-nio-8443-exec-6] ....  INFO --- Audit: UserAuthenticationSuccess ('abhisr'): principal=530d4c6d-3d81-4abc-b36c-56b650206fd2, origin=[remoteAddress=61.40.138.66, sessionId=<SESSION>], identityZoneId=[uaa]
+
