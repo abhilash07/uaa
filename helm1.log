@@ -1,0 +1,5273 @@
+[debug] Created tunnel using local port: '41951'
+
+[debug] SERVER: "127.0.0.1:41951"
+
+[debug] Original chart version: "1.0.20-rc.2"
+[debug] Fetched containerum/containerum to /home/ubuntu/.helm/cache/archive/containerum-1.0.20-rc.2.tgz
+
+[debug] CHART PATH: /home/ubuntu/.helm/cache/archive/containerum-1.0.20-rc.2.tgz
+
+NAME:   peeking-manta
+REVISION: 1
+RELEASED: Tue Aug 14 23:05:21 2018
+CHART: containerum-1.0.20-rc.2
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+api-gateway:
+  config: env/config.toml
+  env:
+    global:
+      CONFIG_FILE: /config.toml
+      GATEWAY_DEBUG: true
+      ROUTES_FILE: /routes/routes.toml
+      TLS_CERT: /cert/tls.crt
+      TLS_KEY: /cert/tls.key
+    local:
+      GRPC_AUTH_ADDRESS: null
+      SERVICE_HOST_PREFIX: release-name
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/gateway
+    secret: null
+    tag: v1.0.3
+  replicaCount: 1
+  routes:
+  - name: routes.toml
+    path: env/routes/routes.toml
+  - name: auth.toml
+    path: env/routes/auth.toml
+  - name: kube.toml
+    path: env/routes/kube.toml
+  - name: resource.toml
+    path: env/routes/resource.toml
+  - name: user.toml
+    path: env/routes/user.toml
+  - name: bill.toml
+    path: env/routes/bill.toml
+  - name: permissions.toml
+    path: env/routes/permissions.toml
+  - name: volume.toml
+    path: env/routes/volume.toml
+  - name: solutions.toml
+    path: env/routes/solutions.toml
+  - name: mail.toml
+    path: env/routes/mail.toml
+  - name: nodemetrics.toml
+    path: env/routes/nodemetrics.toml
+  service:
+    externalIP: null
+    port: 8082
+    targetPort: 8082
+  tls:
+    cert: QkFTRTY0X1RMU19DRVJUCg==
+    enable: false
+    key: QkFTRTY0X1RMU19LRVkK
+auth:
+  env:
+    global:
+      CH_AUTH_ACCESS_TOKEN_LIFETIME: 15m
+      CH_AUTH_BUNT_STORAGE_FILE: /storage/storage.db
+      CH_AUTH_GRPC_LISTENADDR: 0.0.0.0:1112
+      CH_AUTH_HTTP_LISTENADDR: 0.0.0.0:1111
+      CH_AUTH_ISSUER: containerum.com
+      CH_AUTH_JWT_SIGNING_KEY_FILE: /keys/jwt.key
+      CH_AUTH_JWT_SIGNING_METHOD: HS256
+      CH_AUTH_JWT_VALIDATION_KEY_FILE: /keys/jwt.key
+      CH_AUTH_LOG_LEVEL: 4
+      CH_AUTH_LOG_MODE: text
+      CH_AUTH_REFRESH_TOKEN_LIFETIME: 48h
+      CH_AUTH_STORAGE: buntdb
+      CH_AUTH_TOKENS: jwt
+      CH_AUTH_TRACER: zipkin
+      CH_AUTH_ZIPKIN_COLLECTOR: nop
+    local:
+      JWT_KEY: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/auth
+    secret: null
+    tag: v1.0.2
+  persistence:
+    accessMode: ReadWriteOnce
+    annotations: {}
+    enabled: false
+    mountPath: /storage
+    size: 5Gi
+  replicaCount: 1
+  service:
+    externalIP: null
+    grpc:
+      port: 1112
+      targetPort: 1112
+    http:
+      port: 1111
+      targetPort: 1111
+ingress:
+  api:
+    annotations: {}
+    enabled: true
+    hosts:
+    - api.local.containerum.io
+    path: /
+    tls: []
+  ui:
+    annotations: {}
+    enabled: true
+    hosts:
+    - local.containerum.io
+    path: /
+    tls: []
+kube:
+  env:
+    CH_KUBE_API_DEBUG: "true"
+    CH_KUBE_API_TEXTLOG: "true"
+  global: {}
+  image:
+    pullPolicy: Always
+    repository: containerum/kube
+    secret: null
+    tag: v1.0.5
+  rbac:
+    serviceAccountName: null
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 1214
+    targetPort: 1212
+mail:
+  env:
+    global:
+      CH_MAIL_LISTEN_ADDR: :7070
+      CH_MAIL_LOG_LEVEL: 4
+      CH_MAIL_MESSAGES_DB: /storage/messages.db
+      CH_MAIL_SENDER_MAIL: noreply-test@containerum.io
+      CH_MAIL_SENDER_MAIL_SIMPLE: noreply-test@containerum.io
+      CH_MAIL_SENDER_NAME: containerum
+      CH_MAIL_SENDER_NAME_SIMPLE: containerum
+      CH_MAIL_SMTP_ADDR: null
+      CH_MAIL_SMTP_LOGIN: null
+      CH_MAIL_TEMPLATE_DB: /storage/template.db
+      CH_MAIL_UPSTREAM: smtp
+      CH_MAIL_UPSTREAM_SIMPLE: smtp
+      GIN_MODE: debug
+    local:
+      CH_MAIL_MG_PASSWORD: null
+      CH_MAIL_SMTP_PASSWORD: null
+      CH_MAIL_USER_MANAGER_URL: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/mail
+    tag: v1.0.1
+  persistence:
+    accessMode: ReadWriteOnce
+    annotations: {}
+    enabled: false
+    mountPath: /storage
+    size: 5Gi
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 7070
+    targetPort: 7070
+mongodb:
+  affinity: {}
+  global: {}
+  image:
+    pullPolicy: Always
+    registry: docker.io
+    repository: bitnami/mongodb
+    tag: 3.6.6-debian-9
+  livenessProbe:
+    enabled: true
+    failureThreshold: 6
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  mongodbDatabase: containerum
+  mongodbExtraFlags: []
+  mongodbUsername: mongo
+  nodeSelector: {}
+  persistence:
+    accessModes:
+    - ReadWriteOnce
+    annotations: {}
+    enabled: false
+    size: 8Gi
+  podAnnotations: {}
+  readinessProbe:
+    enabled: true
+    failureThreshold: 6
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  replicaSet:
+    enabled: false
+    name: rs0
+    pdb:
+      minAvailable:
+        arbiter: 1
+        primary: 1
+        secondary: 1
+    replicas:
+      arbiter: 1
+      secondary: 1
+  resources: {}
+  service:
+    port: 27017
+    type: ClusterIP
+  tolerations: []
+  usePassword: true
+nodemetrics:
+  env:
+    global:
+      SERVING_ADDR: :8090
+      rbacEnable: true
+    local:
+      PROMETHEUS_ADDR: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/nodemetrics
+    secret: null
+    tag: 1.0.1
+  kube-prometheus:
+    additionalRulesLabels: {}
+    alertmanager:
+      config:
+        global:
+          resolve_timeout: 5m
+        receivers:
+        - name: "null"
+        route:
+          group_by:
+          - job
+          group_interval: 5m
+          group_wait: 30s
+          receiver: "null"
+          repeat_interval: 12h
+          routes:
+          - match:
+              alertname: DeadMansSwitch
+            receiver: "null"
+      externalUrl: ""
+      image:
+        repository: quay.io/prometheus/alertmanager
+        tag: v0.15.1
+      ingress:
+        annotations: {}
+        enabled: false
+        hosts: []
+        labels: {}
+        tls: []
+      nodeSelector: {}
+      paused: false
+      podAntiAffinity: soft
+      replicaCount: 1
+      resources: {}
+      secrets: []
+      service:
+        annotations: {}
+        clusterIP: ""
+        externalIPs: []
+        loadBalancerIP: ""
+        loadBalancerSourceRanges: []
+        nodePort: 30903
+        type: ClusterIP
+      storageSpec: {}
+    deployAlertManager: true
+    deployCoreDNS: false
+    deployExporterNode: true
+    deployGrafana: true
+    deployKubeControllerManager: true
+    deployKubeDNS: true
+    deployKubeEtcd: true
+    deployKubeScheduler: true
+    deployKubeState: true
+    deployKubelets: true
+    exporter-kube-controller-manager:
+      additionalRulesLabels: {}
+      additionalServiceMonitorLabels: {}
+      controllerManagerPort: 10252
+      endpoints: []
+      global:
+        imagePullSecrets: []
+        pspEnable: true
+        rbacEnable: true
+      scheme: http
+      serviceSelectorLabelKey: k8s-app
+    exporter-kube-dns:
+      additionalServiceMonitorLabels: {}
+      global:
+        imagePullSecrets: []
+        pspEnable: true
+        rbacEnable: true
+    exporter-kube-etcd:
+      additionalRulesLabels: {}
+      additionalServiceMonitorLabels: {}
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      certFile: ""
+      endpoints: []
+      etcdPort: 4001
+      global:
+        imagePullSecrets: []
+        pspEnable: true
+        rbacEnable: true
+      keyFile: ""
+      scheme: http
+      serviceMonitor:
+        create: true
+      serviceSelectorLabelKey: k8s-app
+      serviceSelectorLabelValue: etcd-server
+    exporter-kube-scheduler:
+      additionalRulesLabels: {}
+      additionalServiceMonitorLabels: {}
+      endpoints: []
+      global:
+        imagePullSecrets: []
+        pspEnable: true
+        rbacEnable: true
+      schedulerPort: 10251
+      scheme: http
+      serviceSelectorLabelKey: k8s-app
+    exporter-kubelets:
+      additionalRulesLabels: {}
+      additionalServiceMonitorLabels: {}
+      global:
+        imagePullSecrets: []
+        pspEnable: true
+        rbacEnable: true
+      https: true
+      insecureSkipVerify: true
+    exporter-kubernetes:
+      additionalRulesLabels: {}
+      additionalServiceMonitorLabels: {}
+      global:
+        imagePullSecrets: []
+        pspEnable: true
+        rbacEnable: true
+    exporter-node:
+      additionalRulesLabels: {}
+      additionalServiceMonitorLabels: {}
+      container:
+        args:
+        - --path.procfs=/host/proc
+        - --path.sysfs=/host/sys
+        volumeMounts:
+        - mountPath: /host/proc
+          name: proc
+          readOnly: true
+        - mountPath: /host/sys
+          name: sys
+          readOnly: true
+        volumes:
+        - hostPath:
+            path: /proc
+          name: proc
+        - hostPath:
+            path: /sys
+          name: sys
+      enableDaemonSet: true
+      endpoints: []
+      global:
+        imagePullSecrets: []
+        pspEnable: true
+        rbacEnable: true
+      image:
+        pullPolicy: IfNotPresent
+        repository: quay.io/prometheus/node-exporter
+        tag: v0.15.2
+      nodeExporterPort: 9100
+      nodeSelector: []
+      replicaCount: 1
+      resources:
+        limits:
+          cpu: 200m
+          memory: 50Mi
+        requests:
+          cpu: 100m
+          memory: 30Mi
+      service:
+        containerPort: 9100
+        externalPort: 9100
+        type: ClusterIP
+      tolerations:
+      - effect: NoSchedule
+        operator: Exists
+    global:
+      imagePullSecrets: []
+      pspEnable: true
+      rbacEnable: true
+    prometheus:
+      additionalAlertManagerConfigs: {}
+      additionalRulesLabels: {}
+      additionalScrapeConfigs: []
+      additionalSelfServiceMonitorLabels: {}
+      alertingEndpoints: []
+      config:
+        specifiedInValues: true
+        value: {}
+      externalLabels: {}
+      externalUrl: ""
+      global:
+        imagePullSecrets: []
+        pspEnable: true
+        rbacEnable: true
+      image:
+        repository: quay.io/prometheus/prometheus
+        tag: v2.2.1
+      ingress:
+        annotations: {}
+        enabled: false
+        hosts: []
+        labels: {}
+        tls: []
+      labels: {}
+      logLevel: info
+      nodeSelector: {}
+      paused: false
+      podAntiAffinity: soft
+      podMetadata:
+        annotations: {}
+        labels: {}
+      prometheusLabelValue: ""
+      remoteRead: {}
+      remoteWrite: {}
+      replicaCount: 1
+      resources: {}
+      retention: 24h
+      routePrefix: /
+      ruleNamespaceSelector: {}
+      rules:
+        additionalLabels: {}
+        specifiedInValues: true
+        value: {}
+      rulesSelector: {}
+      secrets: []
+      selfServiceMonitor: true
+      service:
+        annotations: {}
+        clusterIP: ""
+        externalIPs: []
+        labels: {}
+        loadBalancerIP: ""
+        loadBalancerSourceRanges: []
+        nodePort: 30900
+        sessionAffinity: None
+        type: ClusterIP
+      serviceAccount:
+        create: true
+        name: ""
+      serviceMonitorNamespaceSelector: {}
+      serviceMonitors: []
+      serviceMonitorsSelector: {}
+      sidecarsSpec: []
+      storageSpec: {}
+      tolerations: {}
+  prometheus-operator:
+    configmapReload:
+      repository: quay.io/coreos/configmap-reload
+      tag: v0.0.1
+    global:
+      hyperkube:
+        pullPolicy: IfNotPresent
+        repository: quay.io/coreos/hyperkube
+        tag: v1.7.6_coreos.0
+    image:
+      pullPolicy: IfNotPresent
+      repository: quay.io/coreos/prometheus-operator
+      tag: v0.20.0
+    imagePullSecrets: []
+    jobLabel: prometheus-operator
+    kubeletService:
+      enable: true
+      name: kubelet
+      namespace: kube-system
+    nodeSelector: {}
+    prometheusConfigReloader:
+      repository: quay.io/coreos/prometheus-config-reloader
+      tag: v0.20.0
+    pspEnable: true
+    rbacEnable: true
+    resources: {}
+    tolerations: {}
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 8090
+    targetPort: 8090
+  tags:
+    platformdb: false
+permissions:
+  env:
+    global:
+      DB_BASE: containerum
+      DB_SSLMODE: "false"
+      DB_USER: postgres
+      LISTEN_ADDR: :4242
+      LOG_LEVEL: 4
+      MODE: release
+    local:
+      AUTH_ADDR: null
+      BILLING_ADDR: null
+      DB_HOST: null
+      DB_PASSWORD: null
+      KUBE_API_ADDR: null
+      RESOURCE_SERVICE_ADDR: null
+      SOLUTIONS_ADDR: null
+      USER_ADDR: null
+      VOLUME_MANAGER_ADDR: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/permissions
+    secret: null
+    tag: v1.0.2
+  postgresql:
+    persistence:
+      enabled: false
+    postgresDatabase: permissions
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 4242
+    targetPort: 4242
+  tags:
+    db: true
+    platformdb: true
+postgresql:
+  affinity: {}
+  deploymentAnnotations: {}
+  global: {}
+  image: postgres
+  imageTag: 9.6.2
+  metrics:
+    enabled: false
+    image: wrouesnel/postgres_exporter
+    imagePullPolicy: IfNotPresent
+    imageTag: v0.1.1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+  networkPolicy:
+    allowExternal: true
+    enabled: false
+  nodeSelector: {}
+  persistence:
+    accessMode: ReadWriteOnce
+    enabled: false
+    mountPath: /var/lib/postgresql/data/pgdata
+    size: 8Gi
+    subPath: postgresql-db
+  podAnnotations: {}
+  postgresDatabase: containerum
+  probes:
+    liveness:
+      failureThreshold: 6
+      initialDelay: 60
+      timeoutSeconds: 5
+    readiness:
+      initialDelay: 5
+      periodSeconds: 5
+      timeoutSeconds: 3
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  service:
+    externalIPs: []
+    port: 5432
+    type: ClusterIP
+  tolerations: []
+  usePasswordFile: false
+resource:
+  env:
+    global:
+      CH_RESOURCE_DEBUG: "true"
+      CH_RESOURCE_MONGO_DB: containerum
+      CH_RESOURCE_MONGO_LOGIN: mongo
+      CH_RESOURCE_TEXTLOG: "true"
+    local:
+      CH_RESOURCE_KUBE_API_ADDR: null
+      CH_RESOURCE_MONGO_ADDR: null
+      CH_RESOURCE_MONGO_PASSWORD: null
+      CH_RESOURCE_PERMISSIONS_ADDR: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/resource
+    secret: null
+    tag: v1.0.3
+  mongodb:
+    image:
+      pullPolicy: IfNotPresent
+    mongodbDatabase: resource
+    mongodbUsername: mongo
+    persistence:
+      enabled: false
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 1213
+    targetPort: 1213
+  tags:
+    db: true
+    platformdb: true
+solutions:
+  env:
+    global:
+      CH_SOLUTIONS_DB: postgres
+      CH_SOLUTIONS_DEBUG: "false"
+      CH_SOLUTIONS_PG_DBNAME: containerum
+      CH_SOLUTIONS_PG_LOGIN: postgres
+      CH_SOLUTIONS_PG_NOSSL: "true"
+      CH_SOLUTIONS_TEXTLOG: "false"
+    local:
+      CH_SOLUTIONS_KUBE_API_URL: null
+      CH_SOLUTIONS_PG_ADDR: null
+      CH_SOLUTIONS_PG_PASSWORD: null
+      CH_SOLUTIONS_RESOURCE_URL: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/solutions
+    secret: null
+    tag: 1.0.0
+  postgresql:
+    persistence:
+      enabled: false
+    postgresDatabase: permissions
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 6767
+    targetPort: 6767
+  tags:
+    db: true
+    platformdb: true
+tags:
+  db: false
+  platform: true
+  platformdb: true
+ui:
+  env:
+    global:
+      API_HOST: api.local.containerum.io
+      API_PROTOCOL_TYPE: no-ssl
+      COUNTRY: US
+      RECAPTCHA: null
+      SOURCE_TYPE: LOCAL
+    local:
+      API_HOST: null
+      API_PORT: null
+      API_PROTOCOL_TYPE: no-ssl
+      COUNTRY: US
+      LATEST_RELEASE: null
+      RECAPTCHA: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/ui
+    secret: null
+    tag: v1.0.5-rc.3
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 3000
+    targetPort: 3000
+user-manager:
+  env:
+    global:
+      CH_USER_DEBUG: true
+      CH_USER_LISTEN_ADDR: :8111
+      CH_USER_MAIL: http
+      CH_USER_MIGRATIONS_PATH: migrations
+      CH_USER_OAUTH_CLIENTS: http
+      CH_USER_PERMISSIONS: http
+      CH_USER_PG_DBNAME: containerum
+      CH_USER_PG_LOGIN: postgres
+      CH_USER_PG_NOSSL: true
+      CH_USER_RECAPTCHA: dummy
+      CH_USER_RECAPTCHA_KEY: recaptcha_key
+      CH_USER_TEXTLOG: true
+      CH_USER_USER_MANAGER: impl
+      GIN_MODE: debug
+    local:
+      CH_USER_ADMIN_PASSWORD: verystrongpassword
+      CH_USER_AUTH_GRPC_ADDR: null
+      CH_USER_AUTH_HTTP_ADDR: null
+      CH_USER_MAIL_URL: null
+      CH_USER_PERMISSIONS_URL: null
+      CH_USER_PG_ADDR: null
+      CH_USER_PG_PASSWORD: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/user
+    secret: null
+    tag: v1.0.3
+  postgresql:
+    persistence:
+      enabled: false
+    postgresDatabase: usermanager
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 8111
+    targetPort: 8111
+  tags:
+    db: true
+    platformdb: true
+volume:
+  env:
+    global:
+      DB_BASE: containerum
+      DB_SSLMODE: "false"
+      DB_USER: postgres
+      LISTEN_ADDR: :4343
+      LOG_LEVEL: 3
+      MODE: debug
+    local:
+      BILLING_ADDR: null
+      DB_HOST: null
+      DB_PASSWORD: null
+      KUBE_API_ADDR: null
+  global: {}
+  image:
+    pullPolicy: IfNotPresent
+    repository: containerum/volume
+    secret: null
+    tag: 1.0.0-rc.3
+  postgresql:
+    persistence:
+      enabled: false
+    postgresDatabase: volumemanager
+  replicaCount: 1
+  service:
+    externalIP: null
+    port: 4343
+    targetPort: 4343
+  tags:
+    db: true
+    platformdb: true
+
+HOOKS:
+---
+# peeking-manta-api-gateway-config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: peeking-manta-api-gateway-config
+  labels:
+    app: api-gateway
+    chart: api-gateway-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+  annotations:
+    "helm.sh/hook": pre-install
+data:
+  config.toml : |-
+    port = 8082
+
+    [tls]
+    enable = false
+
+    [auth]
+    enable = true
+
+    [prometheus]
+    enable = true
+    port = 8282
+
+    [rate]
+    enable = true
+    limit = 10
+    type = "local"
+---
+# peeking-manta-mongodb
+apiVersion: v1
+kind: Secret
+metadata:
+  name: peeking-manta-mongodb
+  labels:
+    app: mongodb
+    chart: "mongodb-3.0.4"
+    release: "peeking-manta"
+    heritage: "Tiller"
+  annotations:
+    "helm.sh/hook": "pre-install"
+type: Opaque
+data:
+  mongodb-root-password: "YXFYVzkwb1Zacw=="
+  mongodb-password: "a0haYkl6M1NpVQ=="
+---
+# peeking-manta-prometheus-operator-get-crd
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    helm.sh/hook: post-install
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus-operator-get-crd
+spec:
+  template:
+    metadata:
+      labels:
+        app: prometheus-operator
+        release: peeking-manta
+      name: peeking-manta-prometheus-operator-get-crd
+    spec:
+      containers:
+        - name: hyperkube
+          image: "quay.io/coreos/hyperkube:v1.7.6_coreos.0"
+          imagePullPolicy: "IfNotPresent"
+          command:
+            - ./kubectl
+            - get
+            - customresourcedefinitions
+            - alertmanagers.monitoring.coreos.com
+            - prometheuses.monitoring.coreos.com
+            - servicemonitors.monitoring.coreos.com
+      restartPolicy: OnFailure
+      serviceAccountName: peeking-manta-prometheus-operator
+---
+# peeking-manta-postgresql
+apiVersion: v1
+kind: Secret
+metadata:
+  name: peeking-manta-postgresql
+  labels:
+    app: postgresql
+    chart: postgresql-0.15.0
+    release: peeking-manta
+    heritage: Tiller
+  annotations:
+    "helm.sh/hook": "pre-install"
+type: Opaque
+data:
+  
+  postgres-password: "M1FHNkV5M21KYg=="
+---
+# peeking-manta-auth
+apiVersion: v1
+kind: Secret
+metadata:
+  name: peeking-manta-auth
+  labels:
+    app: auth
+    chart: auth-v1.0.2
+    release: peeking-manta
+    heritage: Tiller
+  annotations:
+    "helm.sh/hook": pre-install
+data:
+  
+  jwt.key: "MjVwQ1lCVWI4dzJIc1lEdDg4RWo0M3dITzYwajRxVUI="
+---
+# peeking-manta-prometheus-operator-create-sm-job
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    helm.sh/hook: post-install
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus-operator-create-sm-job
+spec:
+  template:
+    metadata:
+      labels:
+        app: prometheus-operator
+        release: peeking-manta
+      name: peeking-manta-prometheus-operator-create-sm-job
+    spec:
+      containers:
+        - name: hyperkube
+          image: "quay.io/coreos/hyperkube:v1.7.6_coreos.0"
+          imagePullPolicy: "IfNotPresent"
+          command:
+            - ./kubectl
+            - apply 
+            - -f 
+            - /tmp/servicemonitor/servicemonitor-operator.yaml
+          volumeMounts:
+            - mountPath: "/tmp/servicemonitor"
+              name: tmp-configmap-servicemonitor
+      volumes:
+        - name: tmp-configmap-servicemonitor
+          configMap:
+            name: peeking-manta-prometheus-operator
+      restartPolicy: OnFailure
+      serviceAccountName: peeking-manta-prometheus-operator
+---
+# peeking-manta-ui
+apiVersion: v1
+kind: Secret
+metadata:
+  name: peeking-manta-ui
+  labels:
+    app: ui
+    chart: ui-v1.0.5-rc.3
+    release: peeking-manta
+    heritage: Tiller
+  annotations:
+    "helm.sh/hook": pre-install
+type: Opaque
+data:
+  recaptcha: YVlwTUFyOVZiVWtnMm1XRWN4VG03V2pmRUxLTUJxZU4=
+MANIFEST:
+
+---
+# Source: containerum/charts/mail/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: peeking-manta-mail
+  labels:
+    app: mail
+    chart: mail-v1.0.1
+    release: peeking-manta
+    heritage: Tiller
+type: Opaque
+data:
+---
+# Source: containerum/charts/user-manager/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: peeking-manta-user-manager
+  labels:
+    app: user-manager
+    chart: user-manager-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+type: Opaque
+data:
+  admin-password: dmVyeXN0cm9uZ3Bhc3N3b3Jk
+---
+# Source: containerum/charts/api-gateway/templates/config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: peeking-manta-api-gateway-routes
+  labels:
+    app: api-gateway
+    chart: api-gateway-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+data:
+  
+  routes.toml : |-
+    [routes]
+    
+    #include "routes/auth.toml"
+    
+    #include "routes/kube.toml"
+    
+    #include "routes/resource.toml"
+    
+    #include "routes/user.toml"
+    
+    #include "routes/bill.toml"
+    
+    #include "routes/permissions.toml"
+    
+    #include "routes/volume.toml"
+    
+    #include "routes/solutions.toml"
+    
+    #include "routes/mail.toml"
+    
+    #include "routes/nodemetrics.toml"
+    
+  
+  auth.toml : |-
+    [routes.refresh_token]
+    active = true
+    name = "Refresh token"
+    method = "PUT"
+    upstream = "http://auth:1111"
+    listen = "/token/:refresh_token"
+    strip = false
+    group = "auth"
+    
+  
+  kube.toml : |-
+    [routes.configmap_create]
+    active = true
+    name = "Create configmap"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/configmaps"
+    strip = false
+    group = "kube-api"
+    
+    [routes.configmap_list_get]
+    active = true
+    name = "Get configmap list"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/configmaps"
+    strip = false
+    group = "kube-api"
+    
+    [routes.configmap_all_namespaces_get]
+    active = true
+    name = "Get all namespaces configmap list"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/configmaps"
+    strip = false
+    group = "kube-api"
+    
+    [routes.configmap_get]
+    active = true
+    name = "Get configmap"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/configmaps/:configmap"
+    strip = false
+    group = "kube-api"
+    
+    [routes.configmap_replace]
+    active = true
+    name = "Replace configmap"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/configmaps/:configmap"
+    strip = false
+    group = "kube-api"
+    
+    [routes.configmap_delete]
+    active = true
+    name = "Delete configmap"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/configmaps/:configmap"
+    strip = false
+    group = "kube-api"
+    
+    [routes.namespacelist_get_usage]
+    active = true
+    name = "Get Namespace List"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214/namespaces"
+    listen = "/usage/namespaces"
+    strip = true
+    group = "kube-api"
+    
+    [routes.deployments_get]
+    active = true
+    name = "Get Deployments"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/deployments"
+    strip = false
+    group = "kube-api"
+    
+    [routes.deployment_get]
+    active = true
+    name = "Get Deployment"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/deployments/:deployment"
+    strip = false
+    group = "kube-api"
+    
+    [routes.services_get]
+    active = true
+    name = "Get Services"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/services"
+    strip = false
+    group = "kube-api"
+    
+    [routes.service_get]
+    active = true
+    name = "Get Service"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/services/:service"
+    strip = false
+    group = "kube-api"
+    
+    [routes.logs_get]
+    active = true
+    name = "Get Logs"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/pods/:pod/log"
+    strip = false
+    group = "kube-api"
+    ws = true
+    
+    [routes.ingresses_get]
+    active = true
+    name = "Get Ingresses"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/ingresses"
+    strip = false
+    group = "kube-api"
+    
+    [routes.ingress_get]
+    active = true
+    name = "Get Ingress"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/ingresses/:ingress"
+    strip = false
+    group = "kube-api"
+    
+    [routes.ingresses_list_get]
+    active = true
+    name = "Get All User Ingresses List"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/ingresses"
+    strip = false
+    group = "kube-api"
+    
+    [routes.pod_delete]
+    active = true
+    name = "Delete Pod"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/pods/:pod"
+    strip = false
+    group = "kube-api"
+    
+    [routes.pod_get]
+    active = true
+    name = "Get pod"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/pods/:pod"
+    strip = false
+    group = "kube-api"
+    
+    [routes.podlist_get]
+    active = true
+    name = "Get pod list"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/pods"
+    strip = false
+    group = "kube-api"
+    
+    [routes.deploypodlist_get]
+    active = true
+    name = "Get deployment pod list"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/deployments/:deployment/pods"
+    strip = false
+    group = "kube-api"
+    
+    [routes.secret_list]
+    active = true
+    name = "Get secret list"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/secrets"
+    strip = false
+    group = "kube-api"
+    
+    [routes.secret_get]
+    active = true
+    name = "Get secret"
+    method = "GET"
+    roles = ["admin"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/secrets/:secret"
+    strip = false
+    group = "kube-api"
+    
+    [routes.secret_create]
+    active = true
+    name = "Create secret"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/secrets/docker"
+    strip = false
+    group = "kube-api"
+    
+    [routes.secret_delete]
+    active = true
+    name = "Delete secret"
+    method = "DELETE"
+    roles = ["admin"]
+    upstream = "http://kube:1214"
+    listen = "/namespaces/:namespace/secrets/:secret"
+    strip = false
+    group = "kube-api"
+    
+  
+  resource.toml : |-
+    [routes.ingress_create]
+    active = true
+    name = "Create Ingress"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/ingresses"
+    strip = false
+    group = "resource-service"
+    
+    [routes.ingress_delete]
+    active = true
+    name = "Delete Ingress"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/ingresses/:ingress"
+    strip = false
+    group = "resource-service"
+    
+    [routes.ingress_update]
+    active = true
+    name = "Update Ingress"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/ingresses/:ingress"
+    strip = false
+    group = "resource-service"
+    
+    [routes.resources_count_get]
+    active = true
+    name = "Get Resources Count"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/resources"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_create]
+    active = true
+    name = "Create Deployment"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_replace]
+    active = true
+    name = "Replace Deployment"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_set_image]
+    active = true
+    name = "Set Image Deployment"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/image"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_set_replicas]
+    active = true
+    name = "Set Replicas Deployment"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/replicas"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_delete]
+    active = true
+    name = "Delete Deployment"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_specific_version_get]
+    active = true
+    name = "Get Specific Deployment Version"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/versions/:version"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_versions_get]
+    active = true
+    name = "Get Deployment Versions"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/versions"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_prev_version_diff_get]
+    active = true
+    name = "Get Diff With Prev Deployment Version"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/versions/:version/diff"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_rand_version_diff_get]
+    active = true
+    name = "Get Diff With Rand Deployment Version"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/versions/:version/diff/:version2"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_specific_version_run]
+    active = true
+    name = "Run Specific Deployment Version"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/versions/:version"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_version_rename]
+    active = true
+    name = "Rename Deployment Version"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/versions/:version"
+    strip = false
+    group = "resource-service"
+    
+    [routes.deployment_version_delete]
+    active = true
+    name = "Delete Deployment Version"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/deployments/:deployment/versions/:version"
+    strip = false
+    group = "resource-service"
+    
+    [routes.service_create]
+    active = true
+    name = "Create Service"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/services"
+    strip = false
+    group = "resource-service"
+    
+    [routes.service_replace]
+    active = true
+    name = "Replace Service"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/services/:service"
+    strip = false
+    group = "resource-service"
+    
+    [routes.service_delete]
+    active = true
+    name = "Delete Service"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/namespaces/:namespace/services/:service"
+    strip = false
+    group = "resource-service"
+    
+    [routes.domain_create]
+    active = true
+    name = "Create Domain"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/domains"
+    strip = false
+    group = "resource-service"
+    
+    [routes.domain_list_get]
+    active = true
+    name = "Get Domain list"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/domains"
+    strip = false
+    group = "resource-service"
+    
+    [routes.domain_delete]
+    active = true
+    name = "Delete Domain"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://resource:1213"
+    listen = "/domains/:domain"
+    strip = false
+    group = "resource-service"
+    
+  
+  user.toml : |-
+    [routes.login_basic]
+    active = true
+    name = "Login Basic"
+    method = "POST"
+    upstream = "http://user-manager:8111"
+    listen = "/login/basic"
+    strip = false
+    group = "user"
+    
+    [routes.login_double]
+    active = true
+    name = "Login Double"
+    method = "POST"
+    upstream = "http://user-manager:8111"
+    listen = "/login"
+    strip = false
+    group = "user"
+    
+    [routes.sign_up]
+    active = true
+    name = "Sign Up"
+    method = "POST"
+    upstream = "http://user-manager:8111"
+    listen = "/user/sign_up"
+    strip = false
+    group = "user"
+    
+    [routes.admin_sign_up]
+    active = true
+    name = "Admin Sign Up"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://user-manager:8111"
+    listen = "/admin/user/sign_up"
+    strip = false
+    group = "user"
+    
+    [routes.admin_user_activation]
+    active = true
+    name = "Admin User Activation"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://user-manager:8111"
+    listen = "/admin/user/activation"
+    strip = false
+    group = "user"
+    
+    [routes.admin_user_deactivation]
+    active = true
+    name = "Admin User Deactivation"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://user-manager:8111"
+    listen = "/admin/user/deactivation"
+    strip = false
+    group = "user"
+    
+    [routes.admin_password_reset]
+    active = true
+    name = "Admin Reset Password"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://user-manager:8111"
+    listen = "/admin/user/password/reset"
+    strip = false
+    group = "user"
+    
+    [routes.admin_set]
+    active = true
+    name = "Admin Set admin"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://user-manager:8111"
+    listen = "/admin/user"
+    strip = false
+    group = "user"
+    
+    [routes.admin_unset]
+    active = true
+    name = "Admin Unset admin"
+    method = "DELETE"
+    roles = ["admin"]
+    upstream = "http://user-manager:8111"
+    listen = "/admin/user"
+    strip = false
+    group = "user"
+    
+    [routes.activate]
+    active = true
+    name = "Activate"
+    method = "POST"
+    upstream = "http://user-manager:8111"
+    listen = "/user/activation"
+    strip = false
+    group = "user"
+    
+    [routes.reset_password]
+    active = true
+    name = "Reset password"
+    method = "POST"
+    upstream = "http://user-manager:8111"
+    listen = "/password/reset"
+    strip = false
+    group = "user"
+    
+    [routes.restore_password]
+    active = true
+    name = "Restore password"
+    method = "POST"
+    upstream = "http://user-manager:8111"
+    listen = "/password/restore"
+    strip = false
+    group = "user"
+    
+    [routes.profile_change]
+    active = true
+    name = "Change profile"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/user/info"
+    strip = false
+    group = "user"
+    
+    [routes.profile_get]
+    active = true
+    name = "Get Profile"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/user/info"
+    strip = false
+    group = "user"
+    
+    [routes.profile_get_by_login]
+    active = true
+    name = "Get Profile by login"
+    method = "GET"
+    roles = ["admin"]
+    upstream = "http://user-manager:8111"
+    listen = "/user/info/login/:login"
+    strip = false
+    group = "user"
+    
+    [routes.password_change]
+    active = true
+    name = "Password Change"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/password/change"
+    strip = false
+    group = "user"
+    
+    [routes.user_delete]
+    active = true
+    name = "Delete user"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/user/delete/partial"
+    strip = false
+    group = "user"
+    
+    [routes.user_delete_admin]
+    active = true
+    name = "Admin delete user"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://user-manager:8111"
+    listen = "/user/delete/complete"
+    strip = false
+    group = "user"
+    
+    [routes.user_list_get]
+    active = true
+    name = "Get user list"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/user/list"
+    strip = false
+    group = "user"
+    
+    [routes.group_create]
+    active = true
+    name = "Create group"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/groups"
+    strip = false
+    group = "user"
+    
+    [routes.group_list_get]
+    active = true
+    name = "Get group list"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/groups"
+    strip = false
+    group = "user"
+    
+    [routes.group_get]
+    active = true
+    name = "Get group"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/groups/:group"
+    strip = false
+    group = "user"
+    
+    [routes.group_members_add]
+    active = true
+    name = "Add group members"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/groups/:group/members"
+    strip = false
+    group = "user"
+    
+    [routes.group_member_access_change]
+    active = true
+    name = "Change access group member"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/groups/:group/members/:member"
+    strip = false
+    group = "user"
+    
+    [routes.group_member_delete]
+    active = true
+    name = "Delete group member"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/groups/:group/members/:member"
+    strip = false
+    group = "user"
+    
+    [routes.group_delete]
+    active = true
+    name = "Delete group"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://user-manager:8111"
+    listen = "/groups/:group"
+    strip = false
+    group = "user"
+    
+  
+  bill.toml : |-
+    [routes.month_usage]
+    active = true
+    name = "Get Month Usage"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/isp/user/tariffs"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.payment_processing]
+    active = true
+    name = "Get Braintree Processing"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/checkouts"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.payment_page]
+    active = true
+    name = "Get Braintree Page"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/checkouts/new"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.billing_history_get]
+    active = true
+    name = "Get Billing History"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/isp/user/report"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.namespace_tariffs_get]
+    active = true
+    name = "Get Namespace Tariffs"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/tariffs/namespace"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.volume_tariffs_get]
+    active = true
+    name = "Get Volume Tariffs"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/tariffs/volume"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.balance_get]
+    active = true
+    name = "Get Balance"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/isp/user/balance"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.coupons_get]
+    active = true
+    name = "Get Coupons"
+    method = "GET"
+    roles = ["admin"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/coupons"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.coupon_create]
+    active = true
+    name = "Create coupon"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/isp/coupon/create"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.coupon_apply]
+    active = true
+    name = "Apply coupon"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/isp/coupon/apply"
+    strip = false
+    group = "billing-manager"
+    
+    [routes.paypal_payment]
+    active = true
+    name = "Paypal payment"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://billing-manager.web.svc:5005"
+    listen = "/isp/paypal"
+    strip = false
+    group = "billing-manager"
+    
+  
+  permissions.toml : |-
+    [routes.namespace_access_get]
+    active = true
+    name = "Get Namespace Access"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace/accesses"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_access_change]
+    active = true
+    name = "Change Namespace Access"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace/accesses"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_access_delete]
+    active = true
+    name = "Delete Namespace Access"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace/accesses"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_create]
+    active = true
+    name = "Create Namespace"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespacelist_get]
+    active = true
+    name = "Get Namespace List"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_get]
+    active = true
+    name = "Get Namespace"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_rename]
+    active = true
+    name = "Rename Namespace"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace/rename"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_create_admin]
+    active = true
+    name = "Admin Create Namespace"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/admin/namespaces"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_list_get_admin]
+    active = true
+    name = "Admin Get Namespace List"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/admin/namespaces"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_resize]
+    active = true
+    name = "Resize Namespace"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_resize_admin]
+    active = true
+    name = "Admin Resize Namespace"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/admin/namespaces/:namespace"
+    strip = false
+    group = "permissions"
+    
+    [routes.namespace_delete]
+    active = true
+    name = "Delete Namespace"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace"
+    strip = false
+    group = "permissions"
+    
+    [routes.project_group_add]
+    active = true
+    name = "Add group to namespace"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace/groups"
+    strip = false
+    group = "permissions"
+    
+    [routes.project_groups_get]
+    active = true
+    name = "Get project groups"
+    method = "GET"
+    roles = ["admin"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace/groups"
+    strip = false
+    group = "permissions"
+    
+    [routes.project_group_delete]
+    active = true
+    name = "Delete group from project"
+    method = "GET"
+    roles = ["admin"]
+    upstream = "http://permissions:4242"
+    listen = "/namespaces/:namespace/groups/:group"
+    strip = false
+    group = "permissions"
+  
+  volume.toml : |-
+    [routes.volume_create]
+    active = true
+    name = "Create Volume"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://volume:4343"
+    listen = "/namespaces/:namespace/volumes"
+    strip = false
+    group = "volume"
+    
+    [routes.limits_volume_create]
+    active = true
+    name = "Create Volume through limits"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://volume:4343"
+    listen = "/limits/namespaces/:namespace/volumes"
+    strip = false
+    group = "volume"
+    
+    [routes.volume_delete]
+    active = true
+    name = "Delete Volume"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://volume:4343"
+    listen = "/namespaces/:namespace/volumes/:volume"
+    strip = false
+    group = "volume"
+    
+    [routes.volume_delete_from_namespace]
+    active = true
+    name = "Delete Volumes from Namespace"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://volume:4343"
+    listen = "/namespaces/:namespace/volumes"
+    strip = false
+    group = "volume"
+    
+    [routes.volume_delete_user_all]
+    active = true
+    name = "Delete all User Volumes"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://volume:4343"
+    listen = "/volumes"
+    strip = false
+    group = "volume"
+    
+    [routes.volume_list_get]
+    active = true
+    name = "Get Volumes"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://volume:4343"
+    listen = "/namespaces/:namespace/volumes"
+    strip = false
+    group = "volume"
+    
+    [routes.volume_get]
+    active = true
+    name = "Get Volume"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://volume:4343"
+    listen = "/namespaces/:namespace/volumes/:volume"
+    strip = false
+    group = "volume"
+    
+    [routes.volume_get_all]
+    active = true
+    name = "Get All Volumes"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://volume:4343"
+    listen = "/admin/volumes"
+    strip = false
+    group = "volume"
+    
+    [routes.volume_resize]
+    active = true
+    name = "Resize Volume"
+    method = "PUT"
+    roles = ["*"]
+    upstream = "http://volume:4343"
+    listen = "/namespaces/:namespace/volumes/:volume"
+    strip = false
+    group = "volume"
+    
+    [routes.volume_resize_admin]
+    active = true
+    name = "Admin Resize Volume"
+    method = "PUT"
+    roles = ["admin"]
+    upstream = "http://volume:4343"
+    listen = "/admin/namespaces/:namespace/volumes/:volume"
+    strip = false
+    group = "volume"
+    
+    [routes.storage_add]
+    active = true
+    name = "Admin Add Storage"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://volume:4343"
+    listen = "/storages"
+    strip = false
+    group = "volume"
+    
+    [routes.storage_list_get]
+    active = true
+    name = "Get Storage List"
+    method = "GET"
+    roles = ["admin"]
+    upstream = "http://volume:4343"
+    listen = "/storages"
+    strip = false
+    group = "volume"
+    
+    [routes.storage_update]
+    active = true
+    name = "Storage Update"
+    method = "PUT"
+    roles = ["admin"]
+    upstream = "http://volume:4343"
+    listen = "/storages/:storage"
+    strip = false
+    group = "volume"
+    
+    [routes.storage_delete]
+    active = true
+    name = "Delete Storage"
+    method = "DELETE"
+    roles = ["admin"]
+    upstream = "http://volume:4343"
+    listen = "/storages/:storage"
+    strip = false
+    group = "volume"
+  
+  solutions.toml : |-
+    [routes.templates_get]
+    active = true
+    name = "Get Solution Templates"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/templates"
+    strip = false
+    group = "solutions"
+    
+    [routes.templates_add]
+    active = true
+    name = "Add Solution Template"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://solutions:6767"
+    listen = "/templates"
+    strip = false
+    group = "solutions"
+    
+    [routes.template_env_get]
+    active = true
+    name = "Get Solution Template Env"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/templates/:template/env"
+    strip = false
+    group = "solutions"
+    
+    [routes.template_deactivate]
+    active = true
+    name = "Deactivate template"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://solutions:6767"
+    listen = "/templates/:template/deactivate"
+    strip = false
+    group = "solutions"
+    
+    [routes.solutions_get]
+    active = true
+    name = "Get Solutions"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/namespaces/:namespace/solutions"
+    strip = false
+    group = "solutions"
+    
+    [routes.solutions_user_delete]
+    active = true
+    name = "Delete All User Solutions"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/solutions"
+    strip = false
+    group = "solutions"
+    
+    [routes.solution_get]
+    active = true
+    name = "Get Solution"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/namespaces/:namespace/solutions/:solution"
+    strip = false
+    group = "solutions"
+    
+    [routes.solutions_run]
+    active = true
+    name = "Run Solutions"
+    method = "POST"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/namespaces/:namespace/solutions"
+    strip = false
+    group = "solutions"
+    
+    [routes.solution_deployments_get]
+    active = true
+    name = "Get Solution Deployments"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/namespaces/:namespace/solutions/:solution/deployments"
+    strip = false
+    group = "solutions"
+    
+    [routes.solution_services_get]
+    active = true
+    name = "Get Solution Services"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/namespaces/:namespace/solutions/:solution/services"
+    strip = false
+    group = "solutions"
+    
+    [routes.solution_delete]
+    active = true
+    name = "Delete Solution"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/namespaces/:namespace/solutions/:solution"
+    strip = false
+    group = "solutions"
+    
+    [routes.solution_namespace_delete]
+    active = true
+    name = "Delete All Namespace Solutions"
+    method = "DELETE"
+    roles = ["*"]
+    upstream = "http://solutions:6767"
+    listen = "/namespaces/:namespace/solutions"
+    strip = false
+    group = "solutions"
+    
+  
+  mail.toml : |-
+    [routes.mail_templates_get]
+    active = true
+    name = "Get templates"
+    method = "GET"
+    roles = ["admin"]
+    upstream = "http://mail-templater:7070/templates"
+    listen = "/mail/templates"
+    strip = true
+    group = "mail"
+    
+    [routes.mail_template_add]
+    active = true
+    name = "Add template"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://mail-templater:7070/templates"
+    listen = "/mail/templates"
+    strip = true
+    group = "mail"
+    
+    [routes.mail_send]
+    active = true
+    name = "Send email"
+    method = "POST"
+    roles = ["admin"]
+    upstream = "http://mail-templater:7070/send"
+    listen = "/mail/send"
+    strip = true
+    group = "mail"
+    
+    [routes.mail_template_delete]
+    active = true
+    name = "Delete template"
+    method = "DELETE"
+    roles = ["admin"]
+    upstream = "http://mail-templater:7070/templates/:template"
+    listen = "/mail/templates/:template"
+    strip = true
+    group = "mail"
+    
+    
+  
+  nodemetrics.toml : |-
+    [routes.current_memory]
+    active = true
+    name = "Get current memory"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/memory/current"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.history_memory]
+    active = true
+    name = "Get history memory"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/memory/history"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.history_memory_node]
+    active = true
+    name = "Get history memory by node"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/memory/history/nodes"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.history_memory_ws]
+    active = true
+    name = "Get history memory websockets"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/memory/history/ws"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.history_memory_node_ws]
+    active = true
+    name = "Get history memory by node websockets"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/memory/history/nodes/ws"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.current_cpu]
+    active = true
+    name = "Get current cpu"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/cpu/current"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.history_cpu]
+    active = true
+    name = "Get history cpu"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/cpu/history"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.history_cpu_node]
+    active = true
+    name = "Get history cpu by node"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/cpu/history/nodes"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.history_cpu_ws]
+    active = true
+    name = "Get history cpu websocket"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/cpu/history/ws"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.history_cpu_node_ws]
+    active = true
+    name = "Get history cpu by node websocket"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/cpu/history/nodes/ws"
+    strip = false
+    group = "nodemetrics"
+    
+    [routes.current_storage]
+    active = true
+    name = "Get current storage"
+    method = "GET"
+    roles = ["*"]
+    upstream = "http://nodemetrics:8090"
+    listen = "/storage/current"
+    strip = false
+    group = "nodemetrics"
+---
+# Source: containerum/charts/nodemetrics/charts/prometheus-operator/templates/servicemonitor-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: peeking-manta-prometheus-operator
+data:
+  servicemonitor-operator.yaml: |-
+      apiVersion: monitoring.coreos.com/v1
+      kind: ServiceMonitor
+      metadata:
+        labels:
+          app: prometheus-operator
+          chart: "prometheus-operator-1.0.0"
+          heritage: "Tiller"
+          release: "peeking-manta"
+          prometheus: peeking-manta
+        name: prometheus-operator
+      spec:
+        jobLabel: prometheus-operator
+        selector:
+          matchLabels:
+            operated-prometheus: "true"
+        namespaceSelector:
+          matchNames:
+            - "default"
+        endpoints:
+        - port: http
+          interval: 30s
+---
+# Source: containerum/charts/postgresql/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: peeking-manta-postgresql
+  labels:
+    app: postgresql
+    chart: postgresql-0.15.0
+    release: peeking-manta
+    heritage: Tiller
+data:
+---
+# Source: containerum/charts/kube/templates/rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: peeking-manta
+  labels:
+    app: kube
+    chart: kube-v1.0.5
+    release: peeking-manta
+    heritage: Tiller
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-node/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: exporter-node
+    chart: exporter-node-0.4.6
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-exporter-node
+imagePullSecrets: 
+  []
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus
+imagePullSecrets: 
+  []
+---
+# Source: containerum/charts/nodemetrics/charts/prometheus-operator/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus-operator
+imagePullSecrets: 
+  []
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-node/templates/psp-clusterrole.yaml
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  labels:
+    app: exporter-node
+    chart: exporter-node-0.4.6
+    heritage: Tiller
+    release: peeking-manta
+  name: psp-peeking-manta-exporter-node
+rules:
+- apiGroups: ['extensions']
+  resources: ['podsecuritypolicies']
+  verbs:     ['use']
+  resourceNames:
+  - peeking-manta-exporter-node
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus
+rules:
+- apiGroups: [""]
+  resources:
+  - nodes
+  - services
+  - endpoints
+  - pods
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources:
+  - configmaps
+  verbs: ["get"]
+- apiGroups: [""]
+  resources:
+  - nodes/metrics
+  verbs: ["get"]
+- nonResourceURLs: ["/metrics"]
+  verbs: ["get"]
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/psp-clusterrole.yaml
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: psp-peeking-manta-prometheus
+rules:
+- apiGroups: ['extensions']
+  resources: ['podsecuritypolicies']
+  verbs:     ['use']
+  resourceNames:
+  - peeking-manta-prometheus
+---
+# Source: containerum/charts/nodemetrics/charts/prometheus-operator/templates/clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus-operator
+rules:
+- apiGroups:
+  - extensions
+  resources:
+  - thirdpartyresources
+  verbs:
+  - "*"
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - "*"
+- apiGroups:
+  - monitoring.coreos.com
+  resources:
+  - alertmanager
+  - alertmanagers
+  - prometheus
+  - prometheuses
+  - service-monitor
+  - servicemonitors
+  - prometheusrules
+  verbs:
+  - "*"
+- apiGroups:
+  - apps
+  resources:
+  - statefulsets
+  verbs: ["*"]
+- apiGroups: [""]
+  resources:
+  - configmaps
+  - secrets
+  verbs: ["*"]
+- apiGroups: [""]
+  resources:
+  - pods
+  verbs: ["list", "delete"]
+- apiGroups: [""]
+  resources:
+  - services
+  - endpoints
+  verbs: ["get", "create", "update"]
+- apiGroups: [""]
+  resources:
+  - nodes
+  verbs: ["list", "watch"]
+- apiGroups: [""]
+  resources:
+  - namespaces
+  verbs: ["list", "watch"]
+---
+# Source: containerum/charts/nodemetrics/charts/prometheus-operator/templates/psp-clusterrole.yaml
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: psp-peeking-manta-prometheus-operator
+rules:
+- apiGroups: ['extensions']
+  resources: ['podsecuritypolicies']
+  verbs:     ['use']
+  resourceNames:
+  - peeking-manta-prometheus-operator
+---
+# Source: containerum/charts/kube/templates/rbac.yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: peeking-manta
+  labels:
+    app: kube
+    chart: kube-v1.0.5
+    release: peeking-manta
+    heritage: Tiller
+subjects:
+- kind: ServiceAccount
+  name: peeking-manta
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-node/templates/psp-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: exporter-node
+    chart: exporter-node-0.4.6
+    heritage: Tiller
+    release: peeking-manta
+  name: psp-peeking-manta-exporter-node
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp-peeking-manta-exporter-node
+subjects:
+  - kind: ServiceAccount
+    name: peeking-manta-exporter-node
+    namespace: default
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: peeking-manta-prometheus
+subjects:
+  - kind: ServiceAccount
+    name: peeking-manta-prometheus
+    namespace: default
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/psp-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: psp-peeking-manta-prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp-peeking-manta-prometheus
+subjects:
+  - kind: ServiceAccount
+    name: peeking-manta-prometheus
+    namespace: default
+---
+# Source: containerum/charts/nodemetrics/charts/prometheus-operator/templates/clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: peeking-manta-prometheus-operator
+subjects:
+  - kind: ServiceAccount
+    name: peeking-manta-prometheus-operator
+    namespace: default
+---
+# Source: containerum/charts/nodemetrics/charts/prometheus-operator/templates/psp-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: psp-peeking-manta-prometheus-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp-peeking-manta-prometheus-operator
+subjects:
+  - kind: ServiceAccount
+    name: peeking-manta-prometheus-operator
+    namespace: default
+---
+# Source: containerum/charts/api-gateway/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-api-gateway
+  labels:
+    app: api-gateway
+    chart: api-gateway-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 8082
+      targetPort: 8082
+      protocol: TCP
+      name: https
+  selector:
+    app: api-gateway
+    release: peeking-manta
+---
+# Source: containerum/charts/auth/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-auth
+  labels:
+    app: auth
+    chart: auth-v1.0.2
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 1111
+      targetPort: 1111
+      protocol: TCP
+      name: http
+    - port: 1112
+      targetPort: 1112
+      protocol: TCP
+      name: grpc
+  selector:
+    app: auth
+    release: peeking-manta
+---
+# Source: containerum/charts/kube/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-kube
+  labels:
+    app: kube
+    chart: kube-v1.0.5
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 1214
+      targetPort: 1212
+      protocol: TCP
+      name: http
+  selector:
+    app: kube
+    release: peeking-manta
+---
+# Source: containerum/charts/mail/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-mail
+  labels:
+    app: mail
+    chart: mail-v1.0.1
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 7070
+      targetPort: 7070
+      protocol: TCP
+      name: http
+  selector:
+    app: mail
+    release: peeking-manta
+---
+# Source: containerum/charts/mongodb/templates/svc-standalone.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-mongodb
+  labels:
+    app: mongodb
+    chart: "mongodb-3.0.4"
+    release: "peeking-manta"
+    heritage: "Tiller"
+spec:
+  type: ClusterIP
+  ports:
+  - name: mongodb
+    port: 27017
+    targetPort: mongodb
+  selector:
+    app: mongodb
+    release: "peeking-manta"
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-controller-manager/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: exporter-kube-controller-manager
+    component: kube-controller-manager
+    heritage: Tiller
+    release: peeking-manta
+    chart: exporter-kube-controller-manager-0.1.10
+  name: peeking-manta-exporter-kube-controller-manager
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+    - name: http-metrics
+      port: 10252
+      protocol: TCP
+      targetPort: 10252
+  selector:
+    k8s-app: kube-controller-manager
+  type: ClusterIP
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-dns/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: exporter-kube-dns
+    component: kube-dns
+    heritage: Tiller
+    release: peeking-manta
+    chart: exporter-kube-dns-0.1.7
+  name: peeking-manta-exporter-kube-dns
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+    - name: http-metrics-dnsmasq
+      port: 10054
+      protocol: TCP
+      targetPort: 10054
+    - name: http-metrics-skydns
+      port: 10055
+      protocol: TCP
+      targetPort: 10055
+  selector:
+    k8s-app: kube-dns
+  type: ClusterIP
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-etcd/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: exporter-kube-etcd
+    component: kube-etcd
+    heritage: Tiller
+    release: peeking-manta
+    chart: exporter-kube-etcd-0.1.15
+  name: peeking-manta-exporter-kube-etcd
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+    - name: http-metrics
+      port: 4001
+      protocol: TCP
+      targetPort: 4001
+  selector:
+    k8s-app: etcd-server
+  type: ClusterIP
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-scheduler/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: exporter-kube-scheduler
+    component: kube-scheduler
+    heritage: Tiller
+    release: peeking-manta
+    chart: exporter-kube-scheduler-0.1.9
+  name: peeking-manta-exporter-kube-scheduler
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+    - name: http-metrics
+      port: 10251
+      protocol: TCP
+      targetPort: 10251
+  selector:
+    k8s-app: kube-scheduler
+  type: ClusterIP
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-node/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-exporter-node
+  labels:
+    app: exporter-node
+    component: node-exporter
+    heritage: Tiller
+    release: peeking-manta
+    chart: exporter-node-0.4.6
+spec:
+  type: ClusterIP
+  ports:
+  - name: metrics
+    port: 9100
+    targetPort: metrics
+    protocol: TCP
+  selector:
+    app: peeking-manta-exporter-node
+    component: node-exporter
+    release: peeking-manta
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    prometheus: "peeking-manta"
+    release: peeking-manta
+  name: peeking-manta-prometheus
+spec:
+  sessionAffinity: "None"
+  clusterIP: ""
+  ports:
+    - name: http
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  selector:
+    app: prometheus
+    prometheus: peeking-manta-prometheus
+  type: "ClusterIP"
+---
+# Source: containerum/charts/nodemetrics/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-nodemetrics
+  labels:
+    app: nodemetrics
+    chart: nodemetrics-1.0.1
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 8090
+      targetPort: 8090
+      protocol: TCP
+      name: http
+  selector:
+    app: nodemetrics
+    release: peeking-manta
+---
+# Source: containerum/charts/permissions/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-permissions
+  labels:
+    app: permissions
+    chart: permissions-v1.0.2
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 4242
+      targetPort: 4242
+      protocol: TCP
+      name: http
+  selector:
+    app: permissions
+    release: peeking-manta
+---
+# Source: containerum/charts/postgresql/templates/svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-postgresql
+  labels:
+    app: postgresql
+    chart: postgresql-0.15.0
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  type: ClusterIP
+  ports:
+  - name: postgresql
+    port: 5432
+    targetPort: postgresql
+  selector:
+    app: postgresql
+    release: peeking-manta
+---
+# Source: containerum/charts/resource/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-resource
+  labels:
+    app: resource
+    chart: resource-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 1213
+      targetPort: 1213
+      protocol: TCP
+      name: http
+  selector:
+    app: resource
+    release: peeking-manta
+---
+# Source: containerum/charts/solutions/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-solutions
+  labels:
+    app: solutions
+    chart: solutions-1.0.0
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 6767
+      targetPort: 6767
+      protocol: TCP
+      name: http
+  selector:
+    app: solutions
+    release: peeking-manta
+---
+# Source: containerum/charts/ui/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-ui
+  labels:
+    app: ui
+    chart: ui-v1.0.5-rc.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: http
+  selector:
+    app: ui
+    release: peeking-manta
+---
+# Source: containerum/charts/user-manager/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-user-manager
+  labels:
+    app: user-manager
+    chart: user-manager-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 8111
+      targetPort: 8111
+      protocol: TCP
+      name: http
+  selector:
+    app: user-manager
+    release: peeking-manta
+---
+# Source: containerum/charts/volume/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: peeking-manta-volume
+  labels:
+    app: volume
+    chart: volume-1.0.0-rc.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  ports:
+    - port: 4343
+      targetPort: 4343
+      protocol: TCP
+      name: http
+  selector:
+    app: volume
+    release: peeking-manta
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-node/templates/daemonset.yaml
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: exporter-node
+    chart: exporter-node-0.4.6
+    component: node-exporter
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-exporter-node
+spec:
+  template:
+    metadata:
+      labels:
+        app: peeking-manta-exporter-node
+        component: node-exporter
+        release: peeking-manta
+    spec:
+      containers:
+        - name: node-exporter
+          image: "quay.io/prometheus/node-exporter:v0.15.2"
+          imagePullPolicy: "IfNotPresent"
+          args:
+          - --web.listen-address=0.0.0.0:9100
+          - --path.procfs=/host/proc
+          - --path.sysfs=/host/sys
+          
+          ports:
+            - name: metrics
+              containerPort: 9100
+              hostPort: 9100
+          resources:
+            limits:
+              cpu: 200m
+              memory: 50Mi
+            requests:
+              cpu: 100m
+              memory: 30Mi
+            
+          volumeMounts:
+          - mountPath: /host/proc
+            name: proc
+            readOnly: true
+          - mountPath: /host/sys
+            name: sys
+            readOnly: true
+          
+      serviceAccountName: peeking-manta-exporter-node
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+        
+      hostNetwork: true
+      hostPID: true
+      volumes:
+      - hostPath:
+          path: /proc
+        name: proc
+      - hostPath:
+          path: /sys
+        name: sys
+---
+# Source: containerum/charts/api-gateway/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-api-gateway
+  labels:
+    app: api-gateway
+    chart: api-gateway-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+        release: peeking-manta
+    spec:
+      containers:
+        - name: api-gateway
+          image: "containerum/gateway:v1.0.3"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CONFIG_FILE
+              value: "/config.toml"
+            - name: GATEWAY_DEBUG
+              value: "true"
+            - name: ROUTES_FILE
+              value: "/routes/routes.toml"
+            - name: TLS_CERT
+              value: "/cert/tls.crt"
+            - name: TLS_KEY
+              value: "/cert/tls.key"
+            - name: GRPC_AUTH_ADDRESS
+              value: "peeking-manta-auth:1112"
+            
+            - name: SERVICE_HOST_PREFIX
+              value: peeking-manta
+            
+          volumeMounts:
+          - mountPath: /routes/
+            name: routes
+          - mountPath: /config.toml
+            name: config
+            subPath: config.toml
+          
+      volumes:
+      - name: routes
+        configMap:
+          name: peeking-manta-api-gateway-routes
+      - name: config
+        configMap:
+          name: peeking-manta-api-gateway-config
+---
+# Source: containerum/charts/auth/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-auth
+  labels:
+    app: auth
+    chart: auth-v1.0.2
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: auth
+        release: peeking-manta
+    spec:
+      containers:
+        - name: auth
+          image: "containerum/auth:v1.0.2"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CH_AUTH_ACCESS_TOKEN_LIFETIME
+              value: "15m"
+            - name: CH_AUTH_BUNT_STORAGE_FILE
+              value: "/storage/storage.db"
+            - name: CH_AUTH_GRPC_LISTENADDR
+              value: "0.0.0.0:1112"
+            - name: CH_AUTH_HTTP_LISTENADDR
+              value: "0.0.0.0:1111"
+            - name: CH_AUTH_ISSUER
+              value: "containerum.com"
+            - name: CH_AUTH_JWT_SIGNING_KEY_FILE
+              value: "/keys/jwt.key"
+            - name: CH_AUTH_JWT_SIGNING_METHOD
+              value: "HS256"
+            - name: CH_AUTH_JWT_VALIDATION_KEY_FILE
+              value: "/keys/jwt.key"
+            - name: CH_AUTH_LOG_LEVEL
+              value: "4"
+            - name: CH_AUTH_LOG_MODE
+              value: "text"
+            - name: CH_AUTH_REFRESH_TOKEN_LIFETIME
+              value: "48h"
+            - name: CH_AUTH_STORAGE
+              value: "buntdb"
+            - name: CH_AUTH_TOKENS
+              value: "jwt"
+            - name: CH_AUTH_TRACER
+              value: "zipkin"
+            - name: CH_AUTH_ZIPKIN_COLLECTOR
+              value: "nop"
+          volumeMounts:
+          - name: data
+            mountPath: /storage
+          - name: jwt
+            mountPath: /keys
+            readOnly: true
+      volumes:
+      - name: data
+        emptyDir: {}
+      - name: jwt
+        secret:
+          secretName: peeking-manta-auth
+---
+# Source: containerum/charts/kube/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-kube
+  labels:
+    app: kube
+    chart: kube-v1.0.5
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: kube
+        release: peeking-manta
+    spec:
+      
+      serviceAccountName: peeking-manta
+      
+      containers:
+        - name: kube
+          image: "containerum/kube:v1.0.5"
+          imagePullPolicy: Always
+          env:
+            - name: CH_KUBE_API_DEBUG
+              value: "true"
+            - name: CH_KUBE_API_TEXTLOG
+              value: "true"
+---
+# Source: containerum/charts/mail/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-mail
+  labels:
+    app: mail
+    chart: mail-v1.0.1
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mail
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: mail
+        release: peeking-manta
+    spec:
+      containers:
+        - name: mail
+          image: "containerum/mail:v1.0.1"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CH_MAIL_LISTEN_ADDR
+              value: ":7070"
+            - name: CH_MAIL_LOG_LEVEL
+              value: "4"
+            - name: CH_MAIL_MESSAGES_DB
+              value: "/storage/messages.db"
+            - name: CH_MAIL_SENDER_MAIL
+              value: "noreply-test@containerum.io"
+            - name: CH_MAIL_SENDER_MAIL_SIMPLE
+              value: "noreply-test@containerum.io"
+            - name: CH_MAIL_SENDER_NAME
+              value: "containerum"
+            - name: CH_MAIL_SENDER_NAME_SIMPLE
+              value: "containerum"
+            - name: CH_MAIL_SMTP_ADDR
+              value: 
+            - name: CH_MAIL_SMTP_LOGIN
+              value: 
+            - name: CH_MAIL_TEMPLATE_DB
+              value: "/storage/template.db"
+            - name: CH_MAIL_UPSTREAM
+              value: "smtp"
+            - name: CH_MAIL_UPSTREAM_SIMPLE
+              value: "smtp"
+            - name: GIN_MODE
+              value: "debug"
+            - name: CH_MAIL_USER_MANAGER_URL
+              value: "http://peeking-manta-user-manager:8111"
+          volumeMounts:
+          - name: peeking-manta-mail
+            mountPath: /storage
+      volumes:
+      - name: peeking-manta-mail
+        emptyDir: {}
+---
+# Source: containerum/charts/mongodb/templates/deployment-standalone.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: peeking-manta-mongodb
+  labels:
+    app: mongodb
+    chart: "mongodb-3.0.4"
+    release: "peeking-manta"
+    heritage: "Tiller"
+spec:
+  template:
+    metadata:
+      labels:
+        app: mongodb
+        release: "peeking-manta"
+    spec:
+      containers:
+      - name: peeking-manta-mongodb
+        image: docker.io/bitnami/mongodb:3.6.6-debian-9
+        imagePullPolicy: "Always"
+        env:
+        - name: MONGODB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: peeking-manta-mongodb
+              key: mongodb-root-password
+        - name: MONGODB_USERNAME
+          value: "mongo"
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: peeking-manta-mongodb
+              key: mongodb-password
+        - name: MONGODB_DATABASE
+          value: "containerum"
+        - name: MONGODB_EXTRA_FLAGS
+          value: 
+        ports:
+        - name: mongodb
+          containerPort: 27017
+        livenessProbe:
+          exec:
+            command:
+            - mongo
+            - --eval
+            - "db.adminCommand('ping')"
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+        readinessProbe:
+          exec:
+            command:
+            - mongo
+            - --eval
+            - "db.adminCommand('ping')"
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+        volumeMounts:
+        - name: data
+          mountPath: /bitnami/mongodb
+        resources:
+          {}
+          
+      volumes:
+      - name: data
+        emptyDir: {}
+---
+# Source: containerum/charts/nodemetrics/charts/prometheus-operator/templates/deployment.yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    operator: prometheus
+    release: peeking-manta
+  name: peeking-manta-prometheus-operator
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prometheus-operator
+        operator: prometheus
+        release: peeking-manta
+    spec:
+      containers:
+        - name: prometheus-operator
+          image: "quay.io/coreos/prometheus-operator:v0.20.0"
+          imagePullPolicy: "IfNotPresent"
+          args:
+            - --kubelet-service=kube-system/kubelet
+            - --prometheus-config-reloader=quay.io/coreos/prometheus-config-reloader:v0.20.0
+            - --config-reloader-image=quay.io/coreos/configmap-reload:v0.0.1
+          ports:
+            - containerPort: 8080
+              name: http
+          resources:
+            {}
+            
+      serviceAccountName: peeking-manta-prometheus-operator
+---
+# Source: containerum/charts/nodemetrics/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-nodemetrics
+  labels:
+    app: nodemetrics
+    chart: nodemetrics-1.0.1
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodemetrics
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: nodemetrics
+        release: peeking-manta
+    spec:
+      containers:
+        - name: nodemetrics
+          image: "containerum/nodemetrics:1.0.1"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SERVING_ADDR
+              value: ":8090"
+            
+            - name: rbacEnable
+              value: "true"
+            
+            - name: PROMETHEUS_ADDR
+              value: "http://peeking-manta-prometheus:9090"
+---
+# Source: containerum/charts/permissions/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-permissions
+  labels:
+    app: permissions
+    chart: permissions-v1.0.2
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: permissions
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: permissions
+        release: peeking-manta
+    spec:
+      containers:
+        - name: permissions
+          image: "containerum/permissions:v1.0.2"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DB_BASE
+              value: "containerum"
+            
+            - name: DB_SSLMODE
+              value: "false"
+            
+            - name: DB_USER
+              value: "postgres"
+            
+            - name: LISTEN_ADDR
+              value: ":4242"
+            
+            - name: LOG_LEVEL
+              value: "4"
+            
+            - name: MODE
+              value: "release"
+            
+            - name: DB_HOST
+              value: "peeking-manta-postgresql:5432"
+            - name: AUTH_ADDR
+              value: "peeking-manta-auth:1112"
+            - name: USER_ADDR
+              value: "peeking-manta-user-manager:8111"
+            - name: KUBE_API_ADDR
+              value: "peeking-manta-kube:1214"
+            - name: RESOURCE_SERVICE_ADDR
+              value: "peeking-manta-resource:1213"
+            - name: VOLUME_MANAGER_ADDR
+              value: "peeking-manta-volume:4343"
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: peeking-manta-postgresql
+                  key: postgres-password
+---
+# Source: containerum/charts/postgresql/templates/deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: peeking-manta-postgresql
+  labels:
+    app: postgresql
+    chart: postgresql-0.15.0
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  selector:
+    matchLabels:
+      app: postgresql
+      release: peeking-manta
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: postgresql
+        release: peeking-manta
+    spec:
+      containers:
+      - name: peeking-manta-postgresql
+        image: "postgres:9.6.2"
+        imagePullPolicy: ""
+        args:
+        env:
+        - name: POSTGRES_USER
+          value: "postgres"
+          # Required for pg_isready in the health probes.
+        - name: PGUSER
+          value: "postgres"
+        - name: POSTGRES_DB
+          value: "containerum"
+        - name: POSTGRES_INITDB_ARGS
+          value: ""
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: peeking-manta-postgresql
+              key: postgres-password
+        - name: POD_IP
+          valueFrom: { fieldRef: { fieldPath: status.podIP } }
+        ports:
+        - name: postgresql
+          containerPort: 5432
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - exec pg_isready --host $POD_IP
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 6
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - exec pg_isready --host $POD_IP
+          initialDelaySeconds: 5
+          timeoutSeconds: 3
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data/pgdata
+          subPath: postgresql-db
+      volumes:
+      - name: data
+        emptyDir: {}
+---
+# Source: containerum/charts/resource/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-resource
+  labels:
+    app: resource
+    chart: resource-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resource
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: resource
+        release: peeking-manta
+    spec:
+      containers:
+        - name: resource
+          image: "containerum/resource:v1.0.3"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CH_RESOURCE_DEBUG
+              value: "true"
+            - name: CH_RESOURCE_MONGO_DB
+              value: "containerum"
+            - name: CH_RESOURCE_MONGO_LOGIN
+              value: "mongo"
+            - name: CH_RESOURCE_TEXTLOG
+              value: "true"
+            - name: CH_RESOURCE_MONGO_ADDR
+              value: "peeking-manta-mongodb:27017"
+            - name: CH_RESOURCE_KUBE_API_ADDR
+              value: "http://peeking-manta-kube:1214"
+            - name: CH_RESOURCE_PERMISSIONS_ADDR
+              value: "http://peeking-manta-permissions:4242"
+            - name: CH_RESOURCE_MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: peeking-manta-mongodb
+                  key: mongodb-password
+---
+# Source: containerum/charts/solutions/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-solutions
+  labels:
+    app: solutions
+    chart: solutions-1.0.0
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solutions
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: solutions
+        release: peeking-manta
+    spec:
+      containers:
+        - name: solutions
+          image: "containerum/solutions:1.0.0"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CH_SOLUTIONS_DB
+              value: "postgres"
+            
+            - name: CH_SOLUTIONS_DEBUG
+              value: "false"
+            
+            - name: CH_SOLUTIONS_PG_DBNAME
+              value: "containerum"
+            
+            - name: CH_SOLUTIONS_PG_LOGIN
+              value: "postgres"
+            
+            - name: CH_SOLUTIONS_PG_NOSSL
+              value: "true"
+            
+            - name: CH_SOLUTIONS_TEXTLOG
+              value: "false"
+            
+            - name: CH_SOLUTIONS_PG_ADDR
+              value: "peeking-manta-postgresql:5432"
+            - name: CH_SOLUTIONS_KUBE_API_URL
+              value: "peeking-manta-kube:1214"
+            - name: CH_SOLUTIONS_RESOURCE_URL
+              value: "peeking-manta-resource:1213"
+            - name: CH_SOLUTIONS_PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: peeking-manta-postgresql
+                  key: postgres-password
+---
+# Source: containerum/charts/ui/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-ui
+  labels:
+    app: ui
+    chart: ui-v1.0.5-rc.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: ui
+        release: peeking-manta
+    spec:
+      containers:
+        - name: ui
+          image: "containerum/ui:v1.0.5-rc.3"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: API_HOST
+              value: "api.local.containerum.io"
+            - name: API_PROTOCOL_TYPE
+              value: "no-ssl"
+            - name: COUNTRY
+              value: "US"
+            - name: RECAPTCHA
+              value: 
+            - name: SOURCE_TYPE
+              value: "LOCAL"
+            - name: API_PORT
+              value: 
+            - name: LATEST_RELEASE
+              value: "v1.0.5-rc.3"
+            - name: RECAPTCHA
+              valueFrom:
+                secretKeyRef:
+                  name: peeking-manta-ui
+                  key: recaptcha
+---
+# Source: containerum/charts/user-manager/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-user-manager
+  labels:
+    app: user-manager
+    chart: user-manager-v1.0.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-manager
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: user-manager
+        release: peeking-manta
+    spec:
+      containers:
+        - name: user-manager
+          image: "containerum/user:v1.0.3"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CH_USER_DEBUG
+              value: "true"
+            - name: CH_USER_LISTEN_ADDR
+              value: ":8111"
+            - name: CH_USER_MAIL
+              value: "http"
+            - name: CH_USER_MIGRATIONS_PATH
+              value: "migrations"
+            - name: CH_USER_OAUTH_CLIENTS
+              value: "http"
+            - name: CH_USER_PERMISSIONS
+              value: "http"
+            - name: CH_USER_PG_DBNAME
+              value: "containerum"
+            - name: CH_USER_PG_LOGIN
+              value: "postgres"
+            - name: CH_USER_PG_NOSSL
+              value: "true"
+            - name: CH_USER_RECAPTCHA
+              value: "dummy"
+            - name: CH_USER_RECAPTCHA_KEY
+              value: "recaptcha_key"
+            - name: CH_USER_TEXTLOG
+              value: "true"
+            - name: CH_USER_USER_MANAGER
+              value: "impl"
+            - name: GIN_MODE
+              value: "debug"
+            - name: CH_USER_PG_ADDR
+              value: "peeking-manta-postgresql:5432"
+            - name: CH_USER_PERMISSIONS_URL
+              value: "http://peeking-manta-permissions:4242"
+            - name: CH_USER_AUTH_HTTP_ADDR
+              value: "http://peeking-manta-auth:1111"
+            - name: CH_USER_MAIL_URL
+              value: "http://peeking-manta-mail:7070"
+            - name: CH_USER_PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: peeking-manta-postgresql
+                  key: postgres-password
+            - name: CH_USER_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: peeking-manta-user-manager
+                  key: admin-password
+---
+# Source: containerum/charts/volume/templates/deployment.yaml
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: peeking-manta-volume
+  labels:
+    app: volume
+    chart: volume-1.0.0-rc.3
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: volume
+      release: peeking-manta
+  template:
+    metadata:
+      labels:
+        app: volume
+        release: peeking-manta
+    spec:
+      containers:
+        - name: volume
+          image: "containerum/volume:1.0.0-rc.3"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DB_BASE
+              value: "containerum"
+            - name: DB_SSLMODE
+              value: "false"
+            - name: DB_USER
+              value: "postgres"
+            - name: LISTEN_ADDR
+              value: ":4343"
+            - name: LOG_LEVEL
+              value: "3"
+            - name: MODE
+              value: "debug"
+            - name: DB_HOST
+              value: "peeking-manta-postgresql:5432"
+            - name: KUBE_API_ADDR
+              value: "peeking-manta-kube-api:1214"
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: peeking-manta-postgresql
+                  key: postgres-password
+---
+# Source: containerum/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: peeking-manta-ui
+  labels:
+    app: containerum
+    chart: containerum-1.0.20-rc.2
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  rules:
+    - host: local.containerum.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: peeking-manta-ui
+              servicePort: http
+---
+# Source: containerum/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: peeking-manta-api
+  labels:
+    app: containerum
+    chart: containerum-1.0.20-rc.2
+    release: peeking-manta
+    heritage: Tiller
+spec:
+  rules:
+    - host: api.local.containerum.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: peeking-manta-api-gateway
+              servicePort: 8082
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/secret.yaml
+---
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-node/templates/psp.yaml
+apiVersion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  labels:
+    app: exporter-node
+    chart: exporter-node-0.4.6
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-exporter-node
+spec:
+  privileged: false
+  # Required to prevent escalations to root.
+  # allowPrivilegeEscalation: false
+  # This is redundant with non-root + disallow privilege escalation,
+  # but we can provide it for defense in depth.
+  #requiredDropCapabilities:
+  #  - ALL
+  # Allow core volume types.
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    - 'persistentVolumeClaim'
+    - 'hostPath'
+  hostNetwork: true
+  hostIPC: false
+  hostPID: true
+  hostPorts:
+    - min: 0
+      max: 65535
+  runAsUser:
+    # Permits the container to run with root privileges as well.
+    rule: 'RunAsAny'
+  seLinux:
+    # This policy assumes the nodes are using AppArmor rather than SELinux.
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 0
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 0
+        max: 65535
+  readOnlyRootFilesystem: false
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/psp.yaml
+apiVersion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus
+spec:
+  privileged: false
+  # Required to prevent escalations to root.
+  # allowPrivilegeEscalation: false
+  # This is redundant with non-root + disallow privilege escalation,
+  # but we can provide it for defense in depth.
+  #requiredDropCapabilities:
+  #  - ALL
+  # Allow core volume types.
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    - 'persistentVolumeClaim'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    # Permits the container to run with root privileges as well.
+    rule: 'RunAsAny'
+  seLinux:
+    # This policy assumes the nodes are using AppArmor rather than SELinux.
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 0
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 0
+        max: 65535
+  readOnlyRootFilesystem: false
+---
+# Source: containerum/charts/nodemetrics/charts/prometheus-operator/templates/psp.yaml
+apiVersion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  labels:
+    app: prometheus-operator
+    chart: prometheus-operator-1.0.0
+    heritage: Tiller
+    release: peeking-manta
+  name: peeking-manta-prometheus-operator
+spec:
+  privileged: false
+  # Required to prevent escalations to root.
+  # allowPrivilegeEscalation: false
+  # This is redundant with non-root + disallow privilege escalation,
+  # but we can provide it for defense in depth.
+  #requiredDropCapabilities:
+  #  - ALL
+  # Allow core volume types.
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    - 'persistentVolumeClaim'
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  runAsUser:
+    # Permits the container to run with root privileges as well.
+    rule: 'RunAsAny'
+  seLinux:
+    # This policy assumes the nodes are using AppArmor rather than SELinux.
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 0
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      # Forbid adding the root group.
+      - min: 0
+        max: 65535
+  readOnlyRootFilesystem: false
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/prometheus.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  labels:
+    app: prometheus
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    prometheus: peeking-manta-prometheus
+    release: peeking-manta
+  name: peeking-manta-prometheus
+spec:
+  alerting:
+    alertmanagers:
+      - namespace: default
+        name: peeking-manta-alertmanager
+        port: http
+  baseImage: "quay.io/prometheus/prometheus"
+  externalUrl: http://peeking-manta-prometheus.default:9090
+  paused: false
+  replicas: 1
+  logLevel:  info
+  resources:
+    {}
+    
+  retention: "24h"
+  routePrefix: "/"
+  serviceAccountName: peeking-manta-prometheus
+
+  serviceMonitorSelector:
+    matchLabels:
+      prometheus: "peeking-manta"
+  ruleSelector:
+    matchLabels:
+      prometheus: "peeking-manta"
+  version: "v2.2.1"
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          topologyKey: kubernetes.io/hostname
+          labelSelector:
+            matchLabels:
+              app: prometheus
+              prometheus: "peeking-manta"
+  imagePullSecrets: 
+    []
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-controller-manager/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: "prometheus"
+    chart: exporter-kube-controller-manager-0.1.10
+    heritage: Tiller
+    prometheus: peeking-manta
+    release: peeking-manta
+  name: peeking-manta-exporter-kube-controller-manager
+spec:
+  
+  groups:
+  - name: kube-controller-manager.rules
+    rules:
+    - alert: K8SControllerManagerDown
+      expr: absent(up{job="kube-controller-manager"} == 1)
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: There is no running K8S controller manager. Deployments and replication
+          controllers are not making progress.
+        runbook: https://coreos.com/tectonic/docs/latest/troubleshooting/controller-recovery.html#recovering-a-controller-manager
+        summary: Controller manager is down
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-etcd/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: "prometheus"
+    chart: exporter-kube-etcd-0.1.15
+    heritage: Tiller
+    prometheus: peeking-manta
+    release: peeking-manta   
+  name: peeking-manta-exporter-kube-etcd
+spec:
+  
+  groups:
+  - name: ./etcd3.rules
+    rules:
+    - alert: InsufficientMembers
+      expr: count(up{job="kube-etcd"} == 0) > (count(up{job="kube-etcd"}) / 2 - 1)
+      for: 3m
+      labels:
+        severity: critical
+      annotations:
+        description: If one more etcd member goes down the cluster will be unavailable
+        summary: etcd cluster insufficient members
+    - alert: NoLeader
+      expr: etcd_server_has_leader{job="kube-etcd"} == 0
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        description: etcd member {{ $labels.instance }} has no leader
+        summary: etcd member has no leader
+    - alert: HighNumberOfLeaderChanges
+      expr: increase(etcd_server_leader_changes_seen_total{job="kube-etcd"}[1h]) > 3
+      labels:
+        severity: warning
+      annotations:
+        description: etcd instance {{ $labels.instance }} has seen {{ $value }} leader
+          changes within the last hour
+        summary: a high number of leader changes within the etcd cluster are happening
+    - alert: HighNumberOfFailedGRPCRequests
+      expr: sum(rate(grpc_server_handled_total{grpc_code!="OK",job="kube-etcd"}[5m])) BY (grpc_service, grpc_method)
+        / sum(rate(grpc_server_handled_total{job="kube-etcd"}[5m])) BY (grpc_service, grpc_method) > 0.01
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: '{{ $value }}% of requests for {{ $labels.grpc_method }} failed
+          on etcd instance {{ $labels.instance }}'
+        summary: a high number of gRPC requests are failing
+    - alert: HighNumberOfFailedGRPCRequests
+      expr: sum(rate(grpc_server_handled_total{grpc_code!="OK",job="kube-etcd"}[5m])) BY (grpc_service, grpc_method)
+        / sum(rate(grpc_server_handled_total{job="kube-etcd"}[5m])) BY (grpc_service, grpc_method) > 0.05
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: '{{ $value }}% of requests for {{ $labels.grpc_method }} failed
+          on etcd instance {{ $labels.instance }}'
+        summary: a high number of gRPC requests are failing
+    - alert: GRPCRequestsSlow
+      expr: histogram_quantile(0.99, sum(rate(grpc_server_handling_seconds_bucket{job="kube-etcd",grpc_type="unary"}[5m])) by (grpc_service, grpc_method, le))
+        > 0.15
+      for: 10m
+      labels:
+        severity: critical
+      annotations:
+        description: on etcd instance {{ $labels.instance }} gRPC requests to {{ $labels.grpc_method
+          }} are slow
+        summary: slow gRPC requests
+    - alert: HighNumberOfFailedHTTPRequests
+      expr: sum(rate(etcd_http_failed_total{job="kube-etcd"}[5m])) BY (method) / sum(rate(etcd_http_received_total{job="kube-etcd"}[5m]))
+        BY (method) > 0.01
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: '{{ $value }}% of requests for {{ $labels.method }} failed on etcd
+          instance {{ $labels.instance }}'
+        summary: a high number of HTTP requests are failing
+    - alert: HighNumberOfFailedHTTPRequests
+      expr: sum(rate(etcd_http_failed_total{job="kube-etcd"}[5m])) BY (method) / sum(rate(etcd_http_received_total{job="kube-etcd"}[5m]))
+        BY (method) > 0.05
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: '{{ $value }}% of requests for {{ $labels.method }} failed on etcd
+          instance {{ $labels.instance }}'
+        summary: a high number of HTTP requests are failing
+    - alert: HTTPRequestsSlow
+      expr: histogram_quantile(0.99, rate(etcd_http_successful_duration_seconds_bucket[5m]))
+        > 0.15
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: on etcd instance {{ $labels.instance }} HTTP requests to {{ $labels.method
+          }} are slow
+        summary: slow HTTP requests
+    - alert: EtcdMemberCommunicationSlow
+      expr: histogram_quantile(0.99, rate(etcd_network_peer_round_trip_time_seconds_bucket[5m]))
+        > 0.15
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: etcd instance {{ $labels.instance }} member communication with
+          {{ $labels.To }} is slow
+        summary: etcd member communication is slow
+    - alert: HighNumberOfFailedProposals
+      expr: increase(etcd_server_proposals_failed_total{job="kube-etcd"}[1h]) > 5
+      labels:
+        severity: warning
+      annotations:
+        description: etcd instance {{ $labels.instance }} has seen {{ $value }} proposal
+          failures within the last hour
+        summary: a high number of proposals within the etcd cluster are failing
+    - alert: HighFsyncDurations
+      expr: histogram_quantile(0.99, rate(etcd_disk_wal_fsync_duration_seconds_bucket[5m]))
+        > 0.5
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: etcd instance {{ $labels.instance }} fync durations are high
+        summary: high fsync durations
+    - alert: HighCommitDurations
+      expr: histogram_quantile(0.99, rate(etcd_disk_backend_commit_duration_seconds_bucket[5m]))
+        > 0.25
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: etcd instance {{ $labels.instance }} commit durations are high
+        summary: high commit durations
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-scheduler/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: "prometheus"
+    chart: exporter-kube-scheduler-0.1.9
+    heritage: Tiller
+    prometheus: peeking-manta
+    release: peeking-manta 
+  name: peeking-manta-exporter-kube-scheduler
+spec:
+  
+  groups:
+  - name: kube-scheduler.rules
+    rules:
+    - record: cluster:scheduler_e2e_scheduling_latency_seconds:quantile
+      expr: histogram_quantile(0.99, sum(scheduler_e2e_scheduling_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.99"
+    - record: cluster:scheduler_e2e_scheduling_latency_seconds:quantile
+      expr: histogram_quantile(0.9, sum(scheduler_e2e_scheduling_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.9"
+    - record: cluster:scheduler_e2e_scheduling_latency_seconds:quantile
+      expr: histogram_quantile(0.5, sum(scheduler_e2e_scheduling_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.5"
+    - record: cluster:scheduler_scheduling_algorithm_latency_seconds:quantile
+      expr: histogram_quantile(0.99, sum(scheduler_scheduling_algorithm_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.99"
+    - record: cluster:scheduler_scheduling_algorithm_latency_seconds:quantile
+      expr: histogram_quantile(0.9, sum(scheduler_scheduling_algorithm_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.9"
+    - record: cluster:scheduler_scheduling_algorithm_latency_seconds:quantile
+      expr: histogram_quantile(0.5, sum(scheduler_scheduling_algorithm_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.5"
+    - record: cluster:scheduler_binding_latency_seconds:quantile
+      expr: histogram_quantile(0.99, sum(scheduler_binding_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.99"
+    - record: cluster:scheduler_binding_latency_seconds:quantile
+      expr: histogram_quantile(0.9, sum(scheduler_binding_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.9"
+    - record: cluster:scheduler_binding_latency_seconds:quantile
+      expr: histogram_quantile(0.5, sum(scheduler_binding_latency_microseconds_bucket)
+        BY (le, cluster)) / 1e+06
+      labels:
+        quantile: "0.5"
+    - alert: K8SSchedulerDown
+      expr: absent(up{job="kube-scheduler"} == 1)
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: There is no running K8S scheduler. New pods are not being assigned
+          to nodes.
+        runbook: https://coreos.com/tectonic/docs/latest/troubleshooting/controller-recovery.html#recovering-a-scheduler
+        summary: Scheduler is down
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kubelets/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: "prometheus"
+    chart: exporter-kubelets-0.2.11
+    heritage: Tiller
+    prometheus: peeking-manta
+    release: peeking-manta
+  name: peeking-manta-exporter-kubelets
+spec:
+  
+  groups:
+  - name: kubelet.rules
+    rules:
+    - alert: K8SNodeNotReady
+      expr: kube_node_status_condition{condition="Ready",status="true"} == 0
+      for: 1h
+      labels:
+        severity: warning
+      annotations:
+        description: The Kubelet on {{ $labels.node }} has not checked in with the API,
+          or has set itself to NotReady, for more than an hour
+        summary: Node status is NotReady
+    - alert: K8SManyNodesNotReady
+      expr: count(kube_node_status_condition{condition="Ready",status="true"} == 0)
+        > 1 and (count(kube_node_status_condition{condition="Ready",status="true"} ==
+        0) / count(kube_node_status_condition{condition="Ready",status="true"})) * 100 > 20
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        description: '{{ $value }}% of Kubernetes nodes are not ready'
+    - alert: K8SKubeletDown
+      expr: count(up{job="kubelet"} == 0) / count(up{job="kubelet"}) * 100 > 3
+      for: 1h
+      labels:
+        severity: warning
+      annotations:
+        description: Prometheus failed to scrape {{ $value }}% of kubelets.
+        summary: Prometheus failed to scrape
+    - alert: K8SKubeletDown
+      expr: (absent(up{job="kubelet"} == 1) or count(up{job="kubelet"} == 0) / count(up{job="kubelet"}))
+        * 100 > 10
+      for: 1h
+      labels:
+        severity: critical
+      annotations:
+        description: Prometheus failed to scrape {{ $value }}% of kubelets, or all Kubelets
+          have disappeared from service discovery.
+        summary: Many Kubelets cannot be scraped
+    - alert: K8SKubeletTooManyPods
+      expr: kubelet_running_pod_count > 100
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: Kubelet {{$labels.instance}} is running {{$value}} pods, close
+          to the limit of 110
+        summary: Kubelet is close to pod limit
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kubernetes/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: "prometheus"
+    chart: exporter-kubernetes-0.1.10
+    heritage: Tiller
+    prometheus: peeking-manta
+    release: peeking-manta
+  name: peeking-manta-exporter-kubernetes
+spec:
+  
+  groups:
+  - name: kubernetes.rules
+    rules:
+    - record: pod_name:container_memory_usage_bytes:sum
+      expr: sum(container_memory_usage_bytes{container_name!="POD",pod_name!=""}) BY
+        (pod_name)
+    - record: pod_name:container_spec_cpu_shares:sum
+      expr: sum(container_spec_cpu_shares{container_name!="POD",pod_name!=""}) BY (pod_name)
+    - record: pod_name:container_cpu_usage:sum
+      expr: sum(rate(container_cpu_usage_seconds_total{container_name!="POD",pod_name!=""}[5m]))
+        BY (pod_name)
+    - record: pod_name:container_fs_usage_bytes:sum
+      expr: sum(container_fs_usage_bytes{container_name!="POD",pod_name!=""}) BY (pod_name)
+    - record: namespace:container_memory_usage_bytes:sum
+      expr: sum(container_memory_usage_bytes{container_name!=""}) BY (namespace)
+    - record: namespace:container_spec_cpu_shares:sum
+      expr: sum(container_spec_cpu_shares{container_name!=""}) BY (namespace)
+    - record: namespace:container_cpu_usage:sum
+      expr: sum(rate(container_cpu_usage_seconds_total{container_name!="POD"}[5m]))
+        BY (namespace)
+    - record: cluster:memory_usage:ratio
+      expr: sum(container_memory_usage_bytes{container_name!="POD",pod_name!=""}) BY
+        (cluster) / sum(machine_memory_bytes) BY (cluster)
+    - record: cluster:container_spec_cpu_shares:ratio
+      expr: sum(container_spec_cpu_shares{container_name!="POD",pod_name!=""}) / 1000
+        / sum(machine_cpu_cores)
+    - record: cluster:container_cpu_usage:ratio
+      expr: sum(rate(container_cpu_usage_seconds_total{container_name!="POD",pod_name!=""}[5m]))
+        / sum(machine_cpu_cores)
+    - record: apiserver_latency_seconds:quantile
+      expr: histogram_quantile(0.99, rate(apiserver_request_latencies_bucket[5m])) /
+        1e+06
+      labels:
+        quantile: "0.99"
+    - record: apiserver_latency:quantile_seconds
+      expr: histogram_quantile(0.9, rate(apiserver_request_latencies_bucket[5m])) /
+        1e+06
+      labels:
+        quantile: "0.9"
+    - record: apiserver_latency_seconds:quantile
+      expr: histogram_quantile(0.5, rate(apiserver_request_latencies_bucket[5m])) /
+        1e+06
+      labels:
+        quantile: "0.5"
+    - alert: APIServerLatencyHigh
+      expr: apiserver_latency_seconds:quantile{quantile="0.99",subresource!="log",verb!~"^(?:WATCH|WATCHLIST|PROXY|CONNECT)$"}
+        > 1
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: the API server has a 99th percentile latency of {{ $value }} seconds
+          for {{$labels.verb}} {{$labels.resource}}
+        summary: API server high latency
+    - alert: APIServerLatencyHigh
+      expr: apiserver_latency_seconds:quantile{quantile="0.99",subresource!="log",verb!~"^(?:WATCH|WATCHLIST|PROXY|CONNECT)$"}
+        > 4
+      for: 10m
+      labels:
+        severity: critical
+      annotations:
+        description: the API server has a 99th percentile latency of {{ $value }} seconds
+          for {{$labels.verb}} {{$labels.resource}}
+        summary: API server high latency
+    - alert: APIServerErrorsHigh
+      expr: rate(apiserver_request_count{code=~"^(?:5..)$"}[5m]) / rate(apiserver_request_count[5m])
+        * 100 > 2
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: API server returns errors for {{ $value }}% of requests
+        summary: API server request errors
+    - alert: APIServerErrorsHigh
+      expr: rate(apiserver_request_count{code=~"^(?:5..)$"}[5m]) / rate(apiserver_request_count[5m])
+        * 100 > 5
+      for: 10m
+      labels:
+        severity: critical
+      annotations:
+        description: API server returns errors for {{ $value }}% of requests
+    - alert: K8SApiserverDown
+      expr: absent(up{job="apiserver"} == 1)
+      for: 20m
+      labels:
+        severity: critical
+      annotations:
+        description: No API servers are reachable or all have disappeared from service
+          discovery
+        summary: No API servers are reachable
+  
+    - alert: K8sCertificateExpirationNotice
+      labels:
+        severity: warning
+      annotations:
+        description: Kubernetes API Certificate is expiring soon (less than 7 days)
+        summary: Kubernetes API Certificate is expiering soon
+      expr: sum(apiserver_client_certificate_expiration_seconds_bucket{le="604800"}) > 0
+  
+    - alert: K8sCertificateExpirationNotice
+      labels:
+        severity: critical
+      annotations:
+        description: Kubernetes API Certificate is expiring in less than 1 day
+        summary: Kubernetes API Certificate is expiering
+      expr: sum(apiserver_client_certificate_expiration_seconds_bucket{le="86400"}) > 0
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-node/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: "prometheus"
+    chart: exporter-node-0.4.6
+    heritage: Tiller
+    prometheus: peeking-manta
+    release: peeking-manta   
+  name: peeking-manta-exporter-node
+spec:
+  
+  groups:
+  - name: node.rules
+    rules:
+    - record: instance:node_cpu:rate:sum
+      expr: sum(rate(node_cpu{mode!="idle",mode!="iowait"}[3m]))
+        BY (instance)
+    - record: instance:node_filesystem_usage:sum
+      expr: sum((node_filesystem_size{mountpoint="/"} - node_filesystem_free{mountpoint="/"}))
+        BY (instance)
+    - record: instance:node_network_receive_bytes:rate:sum
+      expr: sum(rate(node_network_receive_bytes[3m])) BY (instance)
+    - record: instance:node_network_transmit_bytes:rate:sum
+      expr: sum(rate(node_network_transmit_bytes[3m])) BY (instance)
+    - record: instance:node_cpu:ratio
+      expr: sum(rate(node_cpu{mode!="idle",mode!="iowait"}[5m])) WITHOUT (cpu, mode) / ON(instance)
+        GROUP_LEFT() count(sum(node_cpu) BY (instance, cpu)) BY (instance)
+    - record: cluster:node_cpu:sum_rate5m
+      expr: sum(rate(node_cpu{mode!="idle",mode!="iowait"}[5m]))
+    - record: cluster:node_cpu:ratio
+      expr: cluster:node_cpu:rate5m / count(sum(node_cpu) BY (instance, cpu))
+    - alert: NodeExporterDown
+      expr: absent(up{job="node-exporter"} == 1)
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: Prometheus could not scrape a node-exporter for more than 10m,
+          or node-exporters have disappeared from discovery
+        summary: Prometheus could not scrape a node-exporter
+    - alert: NodeDiskRunningFull
+      expr: predict_linear(node_filesystem_free{job="node-exporter",mountpoint!~"^/etc/(?:resolv.conf|hosts|hostname)$"}[6h], 3600 * 24) < 0 and on(instance) up{job="node-exporter"}
+      for: 30m
+      labels:
+        severity: warning
+      annotations:
+        description: device {{$labels.device}} on node {{$labels.instance}} is running
+          full within the next 24 hours (mounted at {{$labels.mountpoint}})
+        summary: Node disk is running full within 24 hours
+    - alert: NodeDiskRunningFull
+      expr: predict_linear(node_filesystem_free{job="node-exporter",mountpoint!~"^/etc/(?:resolv.conf|hosts|hostname)$"}[30m], 3600 * 2) < 0 and on(instance) up{job="node-exporter"}
+      for: 10m
+      labels:
+        severity: critical
+      annotations:
+        description: device {{$labels.device}} on node {{$labels.instance}} is running
+          full within the next 2 hours (mounted at {{$labels.mountpoint}})
+        summary: Node disk is running full within 2 hours
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: "prometheus"
+    chart: prometheus-1.0.0
+    heritage: Tiller
+    prometheus: "peeking-manta"
+    release: peeking-manta
+  name: peeking-manta-prometheus-rules
+spec:
+  
+  groups:
+  - name: prometheus.rules
+    rules:
+    - alert: PrometheusConfigReloadFailed
+      expr: prometheus_config_last_reload_successful == 0
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: Reloading Prometheus' configuration has failed for {{$labels.namespace}}/{{$labels.pod}}
+        summary: Reloading Promehteus' configuration failed
+  
+    - alert: PrometheusNotificationQueueRunningFull
+      expr: predict_linear(prometheus_notifications_queue_length[5m], 60 * 30) > prometheus_notifications_queue_capacity
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: Prometheus' alert notification queue is running full for {{$labels.namespace}}/{{
+          $labels.pod}}
+        summary: Prometheus' alert notification queue is running full  
+  
+    - alert: PrometheusErrorSendingAlerts
+      expr: rate(prometheus_notifications_errors_total[5m]) / rate(prometheus_notifications_sent_total[5m])
+        > 0.01
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: Errors while sending alerts from Prometheus {{$labels.namespace}}/{{
+          $labels.pod}} to Alertmanager {{$labels.Alertmanager}}
+        summary: Errors while sending alert from Prometheus
+  
+    - alert: PrometheusErrorSendingAlerts
+      expr: rate(prometheus_notifications_errors_total[5m]) / rate(prometheus_notifications_sent_total[5m])
+        > 0.03
+      for: 10m
+      labels:
+        severity: critical
+      annotations:
+        description: Errors while sending alerts from Prometheus {{$labels.namespace}}/{{
+          $labels.pod}} to Alertmanager {{$labels.Alertmanager}}
+        summary: Errors while sending alerts from Prometheus
+  
+    - alert: PrometheusNotConnectedToAlertmanagers
+      expr: prometheus_notifications_alertmanagers_discovered < 1
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: Prometheus {{ $labels.namespace }}/{{ $labels.pod}} is not connected
+          to any Alertmanagers
+        summary: Prometheus is not connected to any Alertmanagers
+  
+    - alert: PrometheusTSDBReloadsFailing
+      expr: increase(prometheus_tsdb_reloads_failures_total[2h]) > 0
+      for: 12h
+      labels:
+        severity: warning
+      annotations:
+        description: '{{$labels.job}} at {{$labels.instance}} had {{$value | humanize}}
+          reload failures over the last four hours.'
+        summary: Prometheus has issues reloading data blocks from disk
+  
+    - alert: PrometheusTSDBCompactionsFailing
+      expr: increase(prometheus_tsdb_compactions_failed_total[2h]) > 0
+      for: 12h
+      labels:
+        severity: warning
+      annotations:
+        description: '{{$labels.job}} at {{$labels.instance}} had {{$value | humanize}}
+          compaction failures over the last four hours.'
+        summary: Prometheus has issues compacting sample blocks
+  
+    - alert: PrometheusTSDBWALCorruptions
+      expr: tsdb_wal_corruptions_total > 0
+      for: 4h
+      labels:
+        severity: warning
+      annotations:
+        description: '{{$labels.job}} at {{$labels.instance}} has a corrupted write-ahead
+          log (WAL).'
+        summary: Prometheus write-ahead log is corrupted
+  
+    - alert: PrometheusNotIngestingSamples
+      expr: rate(prometheus_tsdb_head_samples_appended_total[5m]) <= 0
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: "Prometheus {{ $labels.namespace }}/{{ $labels.pod}} isn't ingesting samples."
+        summary: "Prometheus isn't ingesting samples"
+  
+    - alert: PrometheusTargetScapesDuplicate
+      expr: increase(prometheus_target_scrapes_sample_duplicate_timestamp_total[5m]) > 0
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: "{{$labels.namespace}}/{{$labels.pod}} has many samples rejected due to duplicate timestamps but different values"
+        summary: Prometheus has many samples rejected
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/templates/prometheusrule.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: "prometheus"
+    chart: kube-prometheus-1.0.1
+    heritage: Tiller
+    prometheus: peeking-manta
+    release: peeking-manta
+  name: peeking-manta-kube-prometheus
+spec:
+  
+  groups:
+  - name: general.rules
+    rules:
+    - alert: TargetDown
+      expr: 100 * (count(up == 0) BY (job) / count(up) BY (job)) > 10
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: '{{ $value }}% of {{ $labels.job }} targets are down.'
+        summary: Targets are down
+    - alert: DeadMansSwitch
+      expr: vector(1)
+      labels:
+        severity: none
+      annotations:
+        description: This is a DeadMansSwitch meant to ensure that the entire Alerting
+          pipeline is functional.
+        summary: Alerting DeadMansSwitch
+    - record: fd_utilization
+      expr: process_open_fds / process_max_fds
+    - alert: FdExhaustionClose
+      expr: predict_linear(fd_utilization[1h], 3600 * 4) > 1
+      for: 10m
+      labels:
+        severity: warning
+      annotations:
+        description: '{{ $labels.job }}: {{ $labels.namespace }}/{{ $labels.pod }} instance
+          will exhaust in file/socket descriptors within the next 4 hours'
+        summary: file descriptors soon exhausted
+    - alert: FdExhaustionClose
+      expr: predict_linear(fd_utilization[10m], 3600) > 1
+      for: 10m
+      labels:
+        severity: critical
+      annotations:
+        description: '{{ $labels.job }}: {{ $labels.namespace }}/{{ $labels.pod }} instance
+          will exhaust in file/socket descriptors within the next hour'
+        summary: file descriptors soon exhausted
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-controller-manager/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: exporter-kube-controller-manager
+    chart: "exporter-kube-controller-manager-0.1.10"
+    component: kube-controller-manager
+    heritage: "Tiller"
+    release: "peeking-manta"
+    prometheus: peeking-manta
+  name: peeking-manta-exporter-kube-controller-manager
+spec:
+  jobLabel: component
+  selector:
+    matchLabels:
+      app: exporter-kube-controller-manager
+      component: kube-controller-manager
+  namespaceSelector:
+    matchNames:
+      - "kube-system"
+  endpoints:
+  - port: http-metrics
+    interval: 15s
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      # Skip verification until we have resolved why the certificate validation
+      # for the kubelet on API server nodes fail.
+      insecureSkipVerify: true
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-dns/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:    
+    app: exporter-kube-dns
+    chart: "exporter-kube-dns-0.1.7"
+    component: kube-dns
+    heritage: "Tiller"
+    release: "peeking-manta"
+    prometheus: peeking-manta    
+  name: peeking-manta-exporter-kube-dns
+spec:
+  jobLabel: component
+  selector:
+    matchLabels:
+      app: exporter-kube-dns
+      component: kube-dns
+  namespaceSelector:
+    matchNames:
+      - "kube-system"
+  endpoints:
+  - port: http-metrics-dnsmasq
+    interval: 15s
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+  - port: http-metrics-skydns
+    interval: 15s
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-etcd/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: exporter-kube-etcd
+    chart: "exporter-kube-etcd-0.1.15"
+    component: kube-etcd
+    heritage: "Tiller"
+    release: "peeking-manta"
+    prometheus: peeking-manta    
+  name: peeking-manta-exporter-kube-etcd
+spec:
+  jobLabel: component
+  selector:
+    matchLabels:
+      app: exporter-kube-etcd
+      component: kube-etcd
+  namespaceSelector:
+    matchNames:
+      - "kube-system"
+  endpoints:
+  - port: http-metrics
+    interval: 15s
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kube-scheduler/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: exporter-kube-scheduler
+    chart: "exporter-kube-scheduler-0.1.9"
+    component: kube-scheduler
+    heritage: "Tiller"
+    release: "peeking-manta"
+    prometheus: peeking-manta    
+  name: peeking-manta-exporter-kube-scheduler
+spec:
+  jobLabel: component
+  selector:
+    matchLabels:
+      app: exporter-kube-scheduler
+      component: kube-scheduler
+  namespaceSelector:
+    matchNames:
+      - "kube-system"
+  endpoints:
+  - port: http-metrics
+    interval: 15s
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kubelets/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: exporter-kubelets
+    chart: "exporter-kubelets-0.2.11"
+    component: kubelets
+    heritage: "Tiller"
+    release: "peeking-manta"
+    prometheus: peeking-manta    
+  name: peeking-manta-exporter-kubelets
+spec:
+  jobLabel: component
+  selector:
+    matchLabels:
+      k8s-app: kubelet
+  namespaceSelector:
+    matchNames:
+      - "kube-system"
+  endpoints:
+  - port: https-metrics
+    scheme: https
+    interval: 15s
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: true
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+  - port: https-metrics
+    scheme: https
+    path: /metrics/cadvisor
+    interval: 30s
+    honorLabels: true
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecureSkipVerify: true
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-kubernetes/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: exporter-kubernetes
+    chart: "exporter-kubernetes-0.1.10"
+    component: kubelets
+    heritage: "Tiller"
+    release: "peeking-manta"
+    prometheus: peeking-manta    
+  name: peeking-manta-exporter-kubernetes
+spec:
+  jobLabel: component
+  selector:
+    matchLabels:
+      component: apiserver
+      provider: kubernetes
+  namespaceSelector:
+    matchNames:
+      - "default"
+  endpoints:
+  - port: https
+    interval: 15s
+    scheme: https
+    tlsConfig:
+      caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      # Skip verification until we have resolved why the certificate validation
+      # for the kubelet on API server nodes fail.
+      insecureSkipVerify: true
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/exporter-node/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: exporter-node
+    chart: "exporter-node-0.4.6"
+    component: node-exporter
+    heritage: "Tiller"
+    release: "peeking-manta"
+    prometheus: peeking-manta    
+  name: peeking-manta-exporter-node
+spec:
+  jobLabel: component
+  selector:
+    matchLabels:
+      app: exporter-node
+      component: node-exporter
+  namespaceSelector:
+    matchNames:
+      - "default"
+  endpoints:
+  - port: metrics
+    interval: 15s
+---
+# Source: containerum/charts/nodemetrics/charts/kube-prometheus/charts/prometheus/templates/servicemonitor-prometheus.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: prometheus
+    chart: "prometheus-1.0.0"
+    heritage: "Tiller"
+    release: "peeking-manta"
+    prometheus: "peeking-manta"
+  name: peeking-manta-prometheus
+spec:
+  jobLabel: app
+  selector:
+    matchLabels:
+      app: prometheus
+      prometheus: "peeking-manta"
+      chart: prometheus-1.0.0
+  namespaceSelector:
+    matchNames:
+      - "default"
+  endpoints:
+  - port: http
+    interval: 30s
+LAST DEPLOYED: Tue Aug 14 23:05:21 2018
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/ConfigMap
+NAME                               DATA  AGE
+peeking-manta-api-gateway-routes   11    18s
+peeking-manta-prometheus-operator  1     18s
+peeking-manta-postgresql           0     18s
+
+==> v1/ClusterRoleBinding
+NAME           AGE
+peeking-manta  17s
+
+==> v1/Service
+NAME                                            TYPE       CLUSTER-IP      EXTERNAL-IP  PORT(S)              AGE
+peeking-manta-api-gateway                       ClusterIP  10.100.200.198  <none>       8082/TCP             16s
+peeking-manta-auth                              ClusterIP  10.100.200.223  <none>       1111/TCP,1112/TCP    16s
+peeking-manta-kube                              ClusterIP  10.100.200.58   <none>       1214/TCP             16s
+peeking-manta-mail                              ClusterIP  10.100.200.193  <none>       7070/TCP             16s
+peeking-manta-mongodb                           ClusterIP  10.100.200.224  <none>       27017/TCP            16s
+peeking-manta-exporter-kube-controller-manager  ClusterIP  None            <none>       10252/TCP            16s
+peeking-manta-exporter-kube-dns                 ClusterIP  None            <none>       10054/TCP,10055/TCP  16s
+peeking-manta-exporter-kube-etcd                ClusterIP  None            <none>       4001/TCP             16s
+peeking-manta-exporter-kube-scheduler           ClusterIP  None            <none>       10251/TCP            16s
+peeking-manta-exporter-node                     ClusterIP  10.100.200.131  <none>       9100/TCP             15s
+peeking-manta-prometheus                        ClusterIP  10.100.200.159  <none>       9090/TCP             15s
+peeking-manta-nodemetrics                       ClusterIP  10.100.200.111  <none>       8090/TCP             15s
+peeking-manta-permissions                       ClusterIP  10.100.200.108  <none>       4242/TCP             15s
+peeking-manta-postgresql                        ClusterIP  10.100.200.160  <none>       5432/TCP             15s
+peeking-manta-resource                          ClusterIP  10.100.200.106  <none>       1213/TCP             15s
+peeking-manta-solutions                         ClusterIP  10.100.200.3    <none>       6767/TCP             15s
+peeking-manta-ui                                ClusterIP  10.100.200.233  <none>       3000/TCP             15s
+peeking-manta-user-manager                      ClusterIP  10.100.200.236  <none>       8111/TCP             14s
+peeking-manta-volume                            ClusterIP  10.100.200.234  <none>       4343/TCP             14s
+
+==> v1beta1/DaemonSet
+NAME                         DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE SELECTOR  AGE
+peeking-manta-exporter-node  3        3        3      3           3          <none>         14s
+
+==> v1/Pod(related)
+NAME                                                READY  STATUS             RESTARTS  AGE
+peeking-manta-exporter-node-d7hdv                   1/1    Running            0         14s
+peeking-manta-exporter-node-g527x                   1/1    Running            0         14s
+peeking-manta-exporter-node-vtvpk                   1/1    Running            0         14s
+peeking-manta-api-gateway-7ff567bb6-r5c7d           1/1    Running            0         14s
+peeking-manta-auth-cb55bcb5d-6vzmm                  1/1    Running            0         14s
+peeking-manta-kube-67c9cdb44d-vxs78                 1/1    Running            0         14s
+peeking-manta-mail-59989bf8d7-4pmwg                 1/1    Running            0         14s
+peeking-manta-mongodb-6cc75b5fbb-h657j              0/1    ContainerCreating  0         14s
+peeking-manta-prometheus-operator-5fc59b6949-qzl5p  1/1    Running            0         14s
+peeking-manta-nodemetrics-57686765f-gsn2w           1/1    Running            0         14s
+peeking-manta-permissions-54b4f4bb8f-jgvsc          1/1    Running            0         14s
+peeking-manta-postgresql-7897d65454-jqkfv           0/1    Running            0         14s
+peeking-manta-resource-5bdddfd4bd-w8mz9             1/1    Running            0         14s
+peeking-manta-solutions-f947578cb-j5mxx             0/1    CrashLoopBackOff   1         13s
+peeking-manta-ui-666bf86f88-gjrqw                   1/1    Running            0         13s
+peeking-manta-user-manager-7c89d467cd-5nlqv         1/1    Running            1         13s
+peeking-manta-volume-7678fdb895-4bjhg               0/1    Error              0         12s
+
+==> v1/Secret
+NAME                        TYPE    DATA  AGE
+peeking-manta-mail          Opaque  0     18s
+peeking-manta-user-manager  Opaque  1     18s
+
+==> v1/PrometheusRule
+NAME                                            AGE
+peeking-manta-exporter-kube-controller-manager  13s
+peeking-manta-exporter-kube-etcd                13s
+peeking-manta-exporter-kube-scheduler           13s
+peeking-manta-exporter-kubelets                 13s
+peeking-manta-exporter-kubernetes               13s
+peeking-manta-exporter-node                     13s
+peeking-manta-prometheus-rules                  13s
+peeking-manta-kube-prometheus                   13s
+
+==> v1/ServiceMonitor
+peeking-manta-exporter-kube-controller-manager  13s
+peeking-manta-exporter-kube-dns                 13s
+peeking-manta-exporter-kube-etcd                13s
+peeking-manta-exporter-kube-scheduler           13s
+peeking-manta-exporter-kubelets                 13s
+peeking-manta-exporter-kubernetes               12s
+peeking-manta-exporter-node                     12s
+peeking-manta-prometheus                        12s
+
+==> v1beta2/Deployment
+NAME                        DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+peeking-manta-api-gateway   1        1        1           1          14s
+peeking-manta-auth          1        1        1           1          14s
+peeking-manta-kube          1        1        1           1          14s
+peeking-manta-mail          1        1        1           1          14s
+peeking-manta-nodemetrics   1        1        1           1          14s
+peeking-manta-permissions   1        1        1           1          14s
+peeking-manta-resource      1        1        1           1          14s
+peeking-manta-solutions     1        1        1           0          14s
+peeking-manta-ui            1        1        1           1          14s
+peeking-manta-user-manager  1        1        1           1          14s
+peeking-manta-volume        1        1        1           0          14s
+
+==> v1beta1/ClusterRoleBinding
+NAME                                   AGE
+psp-peeking-manta-exporter-node        17s
+peeking-manta-prometheus               17s
+psp-peeking-manta-prometheus           17s
+peeking-manta-prometheus-operator      17s
+psp-peeking-manta-prometheus-operator  17s
+
+==> v1beta1/Deployment
+NAME                               DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+peeking-manta-mongodb              1        1        1           0          14s
+peeking-manta-prometheus-operator  1        1        1           1          14s
+peeking-manta-postgresql           1        1        1           0          14s
+
+==> v1/Prometheus
+NAME                      AGE
+peeking-manta-prometheus  13s
+
+==> v1beta1/ClusterRole
+psp-peeking-manta-exporter-node        17s
+peeking-manta-prometheus               17s
+psp-peeking-manta-prometheus           17s
+peeking-manta-prometheus-operator      17s
+psp-peeking-manta-prometheus-operator  17s
+
+==> v1beta1/Ingress
+NAME               HOSTS                     ADDRESS  PORTS  AGE
+peeking-manta-ui   local.containerum.io      80       14s
+peeking-manta-api  api.local.containerum.io  80       14s
+
+==> v1beta1/PodSecurityPolicy
+NAME                               DATA   CAPS      SELINUX   RUNASUSER  FSGROUP    SUPGROUP  READONLYROOTFS  VOLUMES
+peeking-manta-exporter-node        false  RunAsAny  RunAsAny  MustRunAs  MustRunAs  false     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim,hostPath
+peeking-manta-prometheus           false  RunAsAny  RunAsAny  MustRunAs  MustRunAs  false     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+peeking-manta-prometheus-operator  false  RunAsAny  RunAsAny  MustRunAs  MustRunAs  false     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+
+==> v1/ServiceAccount
+NAME                               SECRETS  AGE
+peeking-manta                      1        18s
+peeking-manta-exporter-node        1        18s
+peeking-manta-prometheus           1        18s
+peeking-manta-prometheus-operator  1        17s
+
+
