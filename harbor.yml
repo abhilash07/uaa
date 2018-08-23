@@ -1,0 +1,153 @@
+---
+name: harbor-deployment
+
+releases:
+- name: harbor-container-registry
+  version: latest
+- name: bosh-dns
+  version: 0.1.3  
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
+
+addons:
+- include:
+    stemcell:
+    - os: ubuntu-trusty
+  jobs:
+  - name: bosh-dns
+    release: bosh-dns
+  name: bosh-dns
+  properties:
+    cache:
+      enabled: true
+    health:
+      client:
+        tls: ((/bosh_dns_health_client_tls))
+      enabled: true
+      server:
+        tls: ((/bosh_dns_health_server_tls))
+    override_nameserver: false
+
+- name: harbor-bosh-dns
+  jobs:
+  - name: harbor-dns-aliases
+    release: harbor-container-registry
+    properties:
+      aliases:
+        ((hostname)):
+        - "*.harbor-app.deployment-network.harbor-deployment.bosh"
+        uaa.server.local:
+        - "*.uaa-app.deployment-network.uaa-deployment.bosh"
+
+- name: enable-bosh-dns
+  jobs:
+  - name: enable-bosh-dns
+    release: harbor-container-registry
+
+instance_groups:
+- name: harbor-app
+  azs: [z1]
+  instances: 1
+  jobs:
+  - name: harbor
+    release: harbor-container-registry
+    properties:
+      hostname: ((hostname))
+      db_password: ((harbor_db_password))
+      admin_password: ((harbor_admin_password))
+      clair_db_password: ((clair_db_password))
+      with_clair: true
+      with_notary: true
+      ssl:
+        cert: ((harbor_ssl.certificate))
+        key: ((harbor_ssl.private_key))
+        ca: ((default_ca.certificate))
+      email:
+        server: in-v3.mailjet.com
+        port: 25
+        username: f5f947e8b84e1872e9df586ed62b8a9a
+        password: 33069481864b7118ca904463bafe27c9
+        from: admin <harbor@gmail.com>
+        ssl: true        
+      #auth_mode: "uaa_auth"
+      #uaa:
+        #url: "https://182.252.135.137:8443"
+        #client_id: "harbor"
+        #client_secret: "chowdary07-"
+        #verify_cert: false
+        #admin:
+          #client_id: "admin"
+          #client_secret: "z03lk55ZEdwoJmFJcL2tHW1EWNqjO2"
+  
+  - name: uaa-deregistration
+    release: harbor-container-registry
+    properties: {}
+    consumes:
+      harbor_uaa_reference: {from: harbor_uaa}
+
+  - name: docker
+    release: harbor-container-registry
+  # this is an errand job
+  - name: smoke-test
+    release: harbor-container-registry
+    properties: {}
+    consumes:
+      harbor_reference: {from: harbor}
+  stemcell: default
+  vm_type: small-highmem
+  persistent_disk: 102400
+  networks:
+  - default:
+    - gateway
+    - dns
+    name: default    
+  - name: vip
+    static_ips:
+    - 182.252.135.134
+
+update:
+  canaries: 2
+  max_in_flight: 1
+  canary_watch_time: 30000-300000
+  update_watch_time: 30000-300000
+
+variables:
+- name: harbor_admin_password
+  type: password
+- name: clair_db_password
+  type: password
+- name: harbor_db_password
+  type: password
+- name: default_ca
+  type: certificate
+  options:
+    is_ca: true
+    common_name: harbor-ca
+- name: harbor_ssl
+  type: certificate
+  options:
+    ca: default_ca
+    common_name: ((hostname))
+    alternative_names: [((hostname))]
+- name: /bosh_dns_health_tls_ca
+  options:
+    common_name: bosh-dns-health-tls-ca
+    is_ca: true
+  type: certificate
+- name: /bosh_dns_health_server_tls
+  options:
+    ca: /bosh_dns_health_tls_ca
+    common_name: health.bosh-dns
+    extended_key_usage:
+    - server_auth
+  type: certificate
+- name: /bosh_dns_health_client_tls
+  options:
+    ca: /bosh_dns_health_tls_ca
+    common_name: health.bosh-dns
+    extended_key_usage:
+    - client_auth
+  type: certificate
